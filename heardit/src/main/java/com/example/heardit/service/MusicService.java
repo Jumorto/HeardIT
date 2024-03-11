@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class MusicService {
 
-    public byte[] getMusicFile(String songName) throws IOException {
-        // filePath = Path.of("E:\\Editing\\Qz. Pchelina - 21-01-2024\\Music\\Nine Lives - Unicorn Heads.mp3");
-        Path filePath = Path.of("E:\\Editing\\music\\" + songName + ".mp3");
+    public byte[] getMusicFile() throws IOException {
+        Path filePath = Path.of("E:\\Editing\\music\\Nine Lives - Unicorn Heads.mp3");
+        //Path filePath = Path.of("E:\\Editing\\music\\" + songName + ".mp3"); String songName
         return Files.readAllBytes(filePath);
     }
 

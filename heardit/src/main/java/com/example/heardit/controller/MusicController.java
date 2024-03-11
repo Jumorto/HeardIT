@@ -19,10 +19,11 @@ public class MusicController {
     private MusicService musicService;
 
     @GetMapping(value = "/stream", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity<ByteArrayResource> streamMusic(@RequestParam String songName) throws IOException {
+    public ResponseEntity<ByteArrayResource> streamMusic() throws IOException {
         // Log the incoming request
         System.out.println("Received request to stream music");
-        byte[] musicBytes = musicService.getMusicFile(songName);
+        //byte[] musicBytes = musicService.getMusicFile(songName); @RequestParam String songName
+        byte[] musicBytes = musicService.getMusicFile();
         ByteArrayResource resource = new ByteArrayResource(musicBytes);
         return ResponseEntity.ok()
                 .contentLength(musicBytes.length)
