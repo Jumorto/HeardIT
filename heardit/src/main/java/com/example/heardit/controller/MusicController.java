@@ -31,6 +31,7 @@ public class MusicController {
                 .body(resource);
     }
 
+    // tav da e na drugo mqsto - na nov microservices
     @GetMapping("/songs")
     public List<String> getAvailableSongs() {
         return musicService.getAvailableSongs();
