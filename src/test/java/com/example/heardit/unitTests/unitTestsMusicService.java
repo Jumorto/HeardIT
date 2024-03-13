@@ -8,6 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalTime;
+import java.util.TimeZone;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -34,5 +36,7 @@ public class unitTestsMusicService {
 
         // Assert the result
         assertArrayEquals(expectedBytes, actualBytes);
+        LocalTime currentTime = LocalTime.now();
+        System.out.println("testGetMusicFile Completed on: " + currentTime);
     }
 }
