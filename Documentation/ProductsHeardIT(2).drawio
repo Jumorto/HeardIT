@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" modified="2024-03-15T17:46:24.642Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0" etag="nUM4P-Jc-XK8ZfzQxTLu" version="24.0.7" type="device">
+  <diagram name="Page-1" id="cKrHXsYGBGEDkONjOXHJ">
+    <mxGraphModel dx="1434" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qZW01bzdhOEAP-FE71Ov-1" target="qZW01bzdhOEAP-FE71Ov-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="qZW01bzdhOEAP-FE71Ov-1" target="qZW01bzdhOEAP-FE71Ov-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-1" value="&lt;div&gt;HeardIT&lt;/div&gt;&lt;div&gt;Individual Project&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="60" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-2" value="&lt;div&gt;Project Plan&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-3" value="Research Plan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-4" value="Project Report" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-5" value="Testing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-6" value="User requirements" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-7" value="Research" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-8" value="&lt;div&gt;HeardIT&lt;/div&gt;&lt;div&gt;Front-end&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-9" value="&lt;div&gt;HeardIT&lt;/div&gt;&lt;div&gt;Microservises&lt;br&gt;&lt;/div&gt;&lt;div&gt;Back-end&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-11" value="Deployment" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-13" value="&lt;div&gt;HeardIT&lt;/div&gt;&lt;div&gt;Dabases&lt;br&gt;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="535" y="390" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-17" value="HeardIT Application" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="180" width="250" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="qZW01bzdhOEAP-FE71Ov-18" value="HeardIT Documentation" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="350" height="360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
