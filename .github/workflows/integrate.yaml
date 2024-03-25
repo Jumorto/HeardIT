@@ -57,7 +57,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
           script: |
-            docker pull jumorto/heardit-backend  # Pull the latest Docker image
-            docker stop heardit-backend || true  # Stop the existing container if running
-            docker rm heardit-backend || true    # Remove the existing container if exists
-            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend  # Run the Docker container
+            docker pull jumorto/heardit-backend  
+            docker stop heardit-backend || true  
+            docker rm heardit-backend || true     
+            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
