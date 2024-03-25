@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class MusicService {
 
-    private Path filePath = Path.of("E:\\Editing\\music\\Nine Lives - Unicorn Heads.mp3");
+    private Path filePath = Path.of("songResources\\Nine Lives - Unicorn Heads.mp3");
 
     public byte[] getMusicFile() throws IOException {
         return Files.readAllBytes(filePath);
