@@ -49,6 +49,9 @@ jobs:
           docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push jumorto/heardit-backend
 
+      - name: Ping GitHub
+        run: ping -c 4 github.com
+
       - name: SSH into Local Machine and Deploy Docker Container
         uses: appleboy/ssh-action@master
         with:
