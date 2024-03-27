@@ -61,7 +61,7 @@ jobs:
     steps:
       - name: Put SSH key to known_hosts
         run: |
-          mkdir -p ~/.ssh/
+          echo "HEYO"
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.LOCAL_MACHINE_HOST }} > ~/.ssh/known_hosts
