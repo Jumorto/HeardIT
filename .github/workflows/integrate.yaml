@@ -57,6 +57,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
           script: |
+            echo "HeardIT starting"
             # Check if the container is running, and if so, stop it
             if docker ps -a --format '{{.Names}}' | grep -q "^heardit-backend$"; then
                 docker stop heardit-backend
