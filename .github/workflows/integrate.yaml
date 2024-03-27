@@ -56,11 +56,11 @@ jobs:
 
       - name: SSH into server and pull Docker image
         run: |
-          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@{{ secrets.LOCAL_MACHINE_HOST }} "docker pull jumorto/heardit-backend"
+          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker pull jumorto/heardit-backend"
 
       - name: Start Docker container
         run: |
-          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@{{ secrets.LOCAL_MACHINE_HOST }} "docker run -d -p 8080:8080 jumorto/heardit-backend"
+          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker run -d -p 8080:8080 jumorto/heardit-backend"
 
 
 
