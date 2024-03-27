@@ -60,8 +60,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
           script: |
+            set -e  # Exit immediately if a command exits with a non-zero status
             docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker pull jumorto/heardit-backend
-            docker stop heardit-backend || true
-            docker rm heardit-backend || true
+            docker stop heardit-backend || echo "Container not running"
+            docker rm heardit-backend || echo "Container not existing"
             docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
+#            docker pull jumorto/heardit-backend
+#            docker stop heardit-backend || true
+#            docker rm heardit-backend || true
+#            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
