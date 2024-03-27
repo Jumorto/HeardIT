@@ -49,23 +49,46 @@ jobs:
           docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push jumorto/heardit-backend
 
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: SSH into server and pull Docker image
+        run: |
+          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@{{ secrets.LOCAL_MACHINE_HOST }} 'docker pull jumorto/heardit-backend'
+
+      - name: Start Docker container
+        run: |
+          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@{{ secrets.LOCAL_MACHINE_HOST }} 'docker run -d -p 8080:8080 jumorto/heardit-backend'
+
+
+
+
+
 #      - name: Deploy Docker image locally
 #        run: |
 #          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker pull jumorto/heardit-backend && docker stop heardit-backend || true && docker rm heardit-backend || true && docker run -d -p 8080:8080 jumorto/heardit-backend"
-      - name: SSH into Local Machine and Deploy Docker Container
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.LOCAL_MACHINE_HOST }}
-          username: ${{ secrets.LOCAL_MACHINE_USERNAME }}
-          password: ${{ secrets.LOCAL_MACHINE_PASS }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
-          script: |
-            set -e  # Exit immediately if a command exits with a non-zero status
-            docker pull jumorto/heardit-backend
-            docker stop heardit-backend || echo "Container not running"
-            docker rm heardit-backend || echo "Container not existing"
-            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
+
+
+
+
+
+
+
+#      - name: SSH into Local Machine and Deploy Docker Container
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.LOCAL_MACHINE_HOST }}
+#          username: ${{ secrets.LOCAL_MACHINE_USERNAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
+#          script: |
+#            set -e  # Exit immediately if a command exits with a non-zero status
+#            docker pull jumorto/heardit-backend
+#            docker stop heardit-backend || echo "Container not running"
+#            docker rm heardit-backend || echo "Container not existing"
+#            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
 #            docker pull jumorto/heardit-backend
 #            docker stop heardit-backend || true
 #            docker rm heardit-backend || true
