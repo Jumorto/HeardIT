@@ -58,22 +58,7 @@ jobs:
           port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
           script: |
             echo "HeardIT starting"
-            # Check if the container is running, and if so, stop it
-            if docker ps -a --format '{{.Names}}' | grep -q "^heardit-backend$"; then
-                docker stop heardit-backend
-            fi
-
-            # Check if the container exists, and if so, remove it
-            if docker ps -a --format '{{.Names}}' | grep -q "^heardit-backend$"; then
-                docker rm heardit-backend
-            fi
-
-            # Pull the Docker image
             docker pull jumorto/heardit-backend
-
-            # Run the container
+            docker stop heardit-backend || true
+            docker rm heardit-backend || true
             docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
-#            docker pull jumorto/heardit-backend
-#            docker stop heardit-backend || true
-#            docker rm heardit-backend || true
-#            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
