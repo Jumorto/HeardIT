@@ -49,12 +49,12 @@ jobs:
           docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push jumorto/heardit-backend
 
-      # Additional steps for local deployment
-      - name: Pull Docker image
-        run: docker pull jumorto/heardit-backend
-
       - name: Run Docker container locally
-        run: docker run -d -p 8080:8080 jumorto/heardit-backend
+        run: |
+          docker pull jumorto/heardit-backend
+          docker stop heardit-backend || true
+          docker rm heardit-backend || true
+          docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
 
 #      - name: SSH into Local Machine and Deploy Docker Container
 #        uses: appleboy/ssh-action@master
