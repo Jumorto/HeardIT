@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "*" ]
 
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.actor }}/hearditbackend-image:latest
+
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
@@ -31,7 +36,7 @@ jobs:
       - name: Run Tests
         run: ./gradlew test
 
-  publish:
+  publish-docker-Hub:
     runs-on: ubuntu-latest
     needs: build_and_test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -49,62 +54,36 @@ jobs:
           docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push jumorto/heardit-backend
 
-#      - name: Install SSH key
-#        uses: webfactory/ssh-agent@v0.5.3
-#        with:
-#          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-  deploy:
+  publish-github-container-Registry:
+    name: publish image
     runs-on: ubuntu-latest
-    needs: publish
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build_and_test
 
     steps:
-      - name: Put SSH key to known_hosts
+      - uses: actions/checkout@v3
+      - name: Login
         run: |
-          echo "HEYO"
-          echo "HEYO"
-          echo "HEYO"
-          echo "HEYO"
+          echo ${{ secrets.PAT_J }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build and Publish
+        run: |
+          docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+  deploy:
+    needs: publish-github-container-Registry
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    name: deploy image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install ssh keys
+        run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.LOCAL_MACHINE_HOST }} > ~/.ssh/known_hosts
-
-      - name: SSH into server and pull Docker image
-        run: |
-          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker pull jumorto/heardit-backend"
-
-      - name: Start Docker container
-        run: |
-          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker run -d -p 8080:8080 jumorto/heardit-backend"
+      - name: connect and pull
+        run: ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
+      - name: cleanup
+        run: rm -rf ~/.ssh
 
 
-
-
-
-#      - name: Deploy Docker image locally
-#        run: |
-#          ssh ${{ secrets.LOCAL_MACHINE_USERNAME }}@${{ secrets.LOCAL_MACHINE_HOST }} "docker pull jumorto/heardit-backend && docker stop heardit-backend || true && docker rm heardit-backend || true && docker run -d -p 8080:8080 jumorto/heardit-backend"
-
-
-
-
-
-
-
-#      - name: SSH into Local Machine and Deploy Docker Container
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.LOCAL_MACHINE_HOST }}
-#          username: ${{ secrets.LOCAL_MACHINE_USERNAME }}
-#          key: ${{ secrets.SSH_PRIVATE_KEY }}
-#          port: ${{ secrets.LOCAL_MACHINE_SSH_PORT }}
-#          script: |
-#            set -e  # Exit immediately if a command exits with a non-zero status
-#            docker pull jumorto/heardit-backend
-#            docker stop heardit-backend || echo "Container not running"
-#            docker rm heardit-backend || echo "Container not existing"
-#            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
-#            docker pull jumorto/heardit-backend
-#            docker stop heardit-backend || true
-#            docker rm heardit-backend || true
-#            docker run -d -p 8080:8080 --name heardit-backend jumorto/heardit-backend
