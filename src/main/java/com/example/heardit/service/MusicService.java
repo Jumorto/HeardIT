@@ -1,15 +1,12 @@
 package com.example.heardit.service;
 
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
+
 
 @Getter
 @Setter
@@ -19,6 +16,7 @@ public class MusicService {
     private Path filePath = Path.of("songResources\\Nine Lives - Unicorn Heads.mp3");
 
     public byte[] getMusicFile() throws IOException {
+        System.out.println("Getting song----------------");
         return Files.readAllBytes(filePath);
     }
 //    public byte[] getMusicFile() throws IOException {
