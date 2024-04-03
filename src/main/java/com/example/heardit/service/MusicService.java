@@ -13,7 +13,8 @@ import java.nio.file.Path;
 @Service
 public class MusicService {
 
-    private Path filePath = Path.of("songResources\\Nine Lives - Unicorn Heads.mp3");
+    //private Path filePath = Path.of("songResources\\NineLives-UnicornHeads.mp3");
+    private Path filePath = Path.of("/opt/app/songResources/NineLives-UnicornHeads.mp3");
 
     public byte[] getMusicFile() throws IOException {
         System.out.println("Getting song----------------");
