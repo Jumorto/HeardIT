@@ -13,6 +13,7 @@ class HearditApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("TESTING");
 	}
 
 }

@@ -21,7 +21,6 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 class TestGetSongByIdUseCaseService {
     @Mock
