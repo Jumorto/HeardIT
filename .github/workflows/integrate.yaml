@@ -20,6 +20,7 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_stream_service
+                working-directory: heardit_songmanager_service
         steps:
             - name: Checkout branch
               uses: actions/checkout@v4
