@@ -1,4 +1,4 @@
-package com.example.heardit.service.exeptions;
+package com.example.heardit.service.exceptions;
 import lombok.Generated;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

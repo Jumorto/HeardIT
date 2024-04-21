@@ -5,7 +5,7 @@ import com.example.heardit.data_access.SongRepository;
 import com.example.heardit.domain.GetSongByIdResponse;
 import com.example.heardit.domain.Song;
 import com.example.heardit.service.converter.SongConverter;
-import com.example.heardit.service.exeptions.NotFoundSongException;
+import com.example.heardit.service.exceptions.NotFoundSongException;
 import com.example.heardit.service.use_cases.GetSongByIdUseCase;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
