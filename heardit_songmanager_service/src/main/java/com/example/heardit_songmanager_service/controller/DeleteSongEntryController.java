@@ -15,7 +15,7 @@ public class DeleteSongEntryController {
     private final DeleteSongEntryUseCase deleteSongEntryUseCase;
 
     @DeleteMapping()
-    public ResponseEntity<Void> deleteSongEntry(@RequestParam(value = "id", required = false) Long id) {
+    public ResponseEntity<Void> deleteSongEntry(@RequestParam(value = "id", required = true) Long id) {
         deleteSongEntryUseCase.deleteSongEntry(id);
         return ResponseEntity.noContent().build();
     }

@@ -27,7 +27,7 @@ public class TestCreateNewSongEntryUseCaseService {
     private CreateNewSongEntryUseCaseService createNewSongEntryUseCaseService;
 
     @Test
-    void createNewBrand() {
+    void createNewSongEntry() {
         SongEntity testSong = SongEntity.builder().id(null).nametrack("Song1").filetrack(null).build();
         SongEntity testSong1 = SongEntity.builder().id(1L).nametrack("Song1").filetrack(null).build();
         when(songRepositoryMock.save(testSong)).thenReturn(testSong1);
