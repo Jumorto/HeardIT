@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+    mysql:
+        image: jumorto/mysql-heardittracks:latest
+        container_name: mysql-1
+        environment:
+            MYSQL_ROOT_PASSWORD: H@punCel9
+            MYSQL_DATABASE: heardittracks
+        ports:
+            - "3307:3306"
+        networks:
+            - my-network
+
+    frontend:
+        image: jumorto/heardit-frontend-test:latest
+        ports:
+            - "3000:3000"
+        networks:
+            - my-network
+
+    search_service:
+        image: jumorto/heardit-search-service:latest
+        restart: on-failure
+        ports:
+            - "8081:8081"
+        depends_on:
+            - mysql
+        networks:
+            - my-network
+
+    manage_service:
+        image: jumorto/heardit-songmanager-service:latest
+        restart: on-failure
+        ports:
+            - "8082:8082"
+        depends_on:
+            - mysql
+        networks:
+            - my-network
+
+networks:
+    my-network:
+        driver: bridge
