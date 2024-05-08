@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class GetAllSongsController {
     private final GetAllSongsUseCase getAllSongsUseCase;
 
-    @GetMapping() //http://localhost:8080/api/search?nametrack=nine
+    @GetMapping() //http://localhost:8081/api/search?nametrack=nine
     public ResponseEntity<GetAllSongsResponse> getAllSongs(@RequestParam(value = "nametrack", required = false) String nametrack){
         GetAllSongsRequest request = GetAllSongsRequest.builder().nametrack(nametrack).build();
         GetAllSongsResponse response = getAllSongsUseCase.getAllSongs(request);
