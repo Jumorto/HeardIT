@@ -19,7 +19,4 @@ public class SongEntity {
 
     @Column(name = "nametrack")
     private String nametrack;
-
-    @Column(name = "filetrack")
-    private byte[] filetrack;
 }
