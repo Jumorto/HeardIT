@@ -26,7 +26,6 @@ public class CreateNewSongEntryUseCaseService implements CreateNewSongEntryUseCa
 
         SongEntity newSongEntity = SongEntity.builder()
                 .nametrack(request.getNameTrack())
-                .filetrack(request.getFileTrack())
                 .build();
         SongEntity savedSongEntity = songRepository.save(newSongEntity);
         return savedSongEntity;

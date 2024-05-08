@@ -10,5 +10,4 @@ import lombok.*;
 public class UpdateSongEntryRequest {
     private Long id;
     private String nameTrack;
-    private byte[] fileTrack;
 }

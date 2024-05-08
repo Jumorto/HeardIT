@@ -28,11 +28,11 @@ public class TestCreateNewSongEntryUseCaseService {
 
     @Test
     void createNewSongEntry() {
-        SongEntity testSong = SongEntity.builder().id(null).nametrack("Song1").filetrack(null).build();
-        SongEntity testSong1 = SongEntity.builder().id(1L).nametrack("Song1").filetrack(null).build();
+        SongEntity testSong = SongEntity.builder().id(null).nametrack("Song1").build();
+        SongEntity testSong1 = SongEntity.builder().id(1L).nametrack("Song1").build();
         when(songRepositoryMock.save(testSong)).thenReturn(testSong1);
 
-        CreateNewSongEntryRequest request = CreateNewSongEntryRequest.builder().nameTrack("Song1").fileTrack(null).build();
+        CreateNewSongEntryRequest request = CreateNewSongEntryRequest.builder().nameTrack("Song1").build();
         CreateNewSongEntryResponse actualResponse = createNewSongEntryUseCaseService.createNewSongEntry(request);
 
         assertEquals(testSong1.getId(), actualResponse.getId());

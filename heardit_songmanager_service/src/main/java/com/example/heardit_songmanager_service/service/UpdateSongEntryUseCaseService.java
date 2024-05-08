@@ -29,10 +29,6 @@ public class UpdateSongEntryUseCaseService implements UpdateSongEntryUseCase {
             song.setNametrack(request.getNameTrack());
         }
 
-        if (request.getFileTrack() != null) {
-            song.setFiletrack(request.getFileTrack());
-        }
-
         songRepository.save(song);
     }
 }

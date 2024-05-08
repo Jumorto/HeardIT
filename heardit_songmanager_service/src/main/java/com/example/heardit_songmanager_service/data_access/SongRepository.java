@@ -6,6 +6,6 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface SongRepository extends JpaRepository<SongEntity, Long> {
-    @Query("SELECT tr.id, tr.nametrack, tr.filetrack FROM SongEntity tr WHERE tr.id=:id")
+    @Query("SELECT tr.id, tr.nametrack FROM SongEntity tr WHERE tr.id=:id")
     SongEntity findSongById(@Param("id") Long id);
 }
