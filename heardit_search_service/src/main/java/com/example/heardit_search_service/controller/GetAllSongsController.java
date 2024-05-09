@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Generated
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000" )
 @AllArgsConstructor
 @RequestMapping("/api/search")
 public class GetAllSongsController {
