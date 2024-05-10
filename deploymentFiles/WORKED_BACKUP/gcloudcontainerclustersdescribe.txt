@@ -1,0 +1,1870 @@
+{
+  "addonsConfig": {
+    "dnsCacheConfig": {
+      "enabled": true
+    },
+    "gcePersistentDiskCsiDriverConfig": {
+      "enabled": true
+    },
+    "gcpFilestoreCsiDriverConfig": {
+      "enabled": true
+    },
+    "gcsFuseCsiDriverConfig": {
+      "enabled": true
+    },
+    "horizontalPodAutoscaling": {},
+    "httpLoadBalancing": {},
+    "kubernetesDashboard": {
+      "disabled": true
+    },
+    "networkPolicyConfig": {
+      "disabled": true
+    },
+    "statefulHaConfig": {
+      "enabled": true
+    }
+  },
+  "authenticatorGroupsConfig": {},
+  "autopilot": {
+    "enabled": true
+  },
+  "autoscaling": {
+    "autoprovisioningNodePoolDefaults": {
+      "imageType": "COS_CONTAINERD",
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "oauthScopes": [
+        "https://www.googleapis.com/auth/devstorage.read_only",
+        "https://www.googleapis.com/auth/logging.write",
+        "https://www.googleapis.com/auth/monitoring",
+        "https://www.googleapis.com/auth/service.management.readonly",
+        "https://www.googleapis.com/auth/servicecontrol",
+        "https://www.googleapis.com/auth/trace.append"
+      ],
+      "serviceAccount": "default",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      }
+    },
+    "autoscalingProfile": "OPTIMIZE_UTILIZATION",
+    "enableNodeAutoprovisioning": true,
+    "resourceLimits": [
+      {
+        "maximum": "1000000000",
+        "resourceType": "cpu"
+      },
+      {
+        "maximum": "1000000000",
+        "resourceType": "memory"
+      },
+      {
+        "maximum": "1000000000",
+        "resourceType": "nvidia-tesla-t4"
+      },
+      {
+        "maximum": "1000000000",
+        "resourceType": "nvidia-tesla-a100"
+      }
+    ]
+  },
+  "binaryAuthorization": {
+    "evaluationMode": "DISABLED"
+  },
+  "clusterIpv4Cidr": "10.46.128.0/17",
+  "createTime": "2024-05-09T09:55:22+00:00",
+  "currentMasterVersion": "1.28.7-gke.1026000",
+  "currentNodeCount": 2,
+  "currentNodeVersion": "1.28.7-gke.1026000",
+  "databaseEncryption": {
+    "state": "DECRYPTED"
+  },
+  "defaultMaxPodsConstraint": {
+    "maxPodsPerNode": "110"
+  },
+  "endpoint": "35.234.110.92",
+  "enterpriseConfig": {
+    "clusterTier": "STANDARD"
+  },
+  "etag": "ae0ff4aa-3f2e-461d-85b3-a0d9d039aae2",
+  "id": "ee2e590e0bb54df1b7b0ff90b7dd495f585a68c4dc0b472f8efc19f763d591ac",
+  "initialClusterVersion": "1.28.7-gke.1026000",
+  "instanceGroupUrls": [
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-default-pool-56cdeace-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-823444be-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-96854d7b-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-29007ef5-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-331b6fa7-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-a733c3ac-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-92541b13-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-9594d142-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-ef580376-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-15de334d-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-6b87177f-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-d8f675f2-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-24bc3db3-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-9eebf3ac-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-7abebf51-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-3662b250-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-82084600-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-590ff646-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-7067ecb7-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-a17da28b-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-grp",
+    "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-grp"
+  ],
+  "ipAllocationPolicy": {
+    "clusterIpv4Cidr": "10.46.128.0/17",
+    "clusterIpv4CidrBlock": "10.46.128.0/17",
+    "clusterSecondaryRangeName": "gke-heardit-cluster-1-pods-ee2e590e",
+    "defaultPodIpv4RangeUtilization": 0.0039,
+    "podCidrOverprovisionConfig": {},
+    "servicesIpv4Cidr": "34.118.224.0/20",
+    "servicesIpv4CidrBlock": "34.118.224.0/20",
+    "stackType": "IPV4",
+    "useIpAliases": true
+  },
+  "labelFingerprint": "a9dc16a7",
+  "legacyAbac": {},
+  "location": "europe-west3",
+  "locations": [
+    "europe-west3-a",
+    "europe-west3-b",
+    "europe-west3-c"
+  ],
+  "loggingConfig": {
+    "componentConfig": {
+      "enableComponents": [
+        "SYSTEM_COMPONENTS",
+        "WORKLOADS"
+      ]
+    }
+  },
+  "loggingService": "logging.googleapis.com/kubernetes",
+  "maintenancePolicy": {
+    "resourceVersion": "e3b0c442"
+  },
+  "masterAuth": {
+    "clusterCaCertificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMRENDQXBTZ0F3SUJBZ0lRZEJIL2VKZmYzdFZVUTVxN0xQRlZDakFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlSbU1qRTVNbVpoWmkwMFpqSmpMVFF6WXpBdE9XUXpNUzB5TW1Wak9EUTBPR1JpT1RjdwpJQmNOTWpRd05UQTVNRGcxTlRJeldoZ1BNakExTkRBMU1ESXdPVFUxTWpOYU1DOHhMVEFyQmdOVkJBTVRKR1l5Ck1Ua3labUZtTFRSbU1tTXRORE5qTUMwNVpETXhMVEl5WldNNE5EUTRaR0k1TnpDQ0FhSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0dQQURDQ0FZb0NnZ0dCQU44VWdpbVRsS3YwVktVRkFIVGxlY3hjTlByU0wxOW1haVBla3podAp4UFo4dk8zeDVwS2l2U1ViRDFXK21PUC9odGYrYjM0WnorSGNCeFpTb2xqNE41TDZPWDlWZ3VQZ0svYTFzdEw2CkZxMmY4ZUg2eitFbGFOKytzSmV5VTZlNzhGejBGWGxBb3c3OGIyYTBicENsRS9RWWQ4VW5TclJCN3RXeDluazgKa0hyZ0R3MzhMY3lhMEQ3cXUvTjVGSFRoeFhabUNFSlJpV2dFTUZNVlIvMW1UenQ1dmNXemlaVExaYVNjTDUyUgp3Nkd4WU9kVStsL2MwRGJRZ0Z5UWR1cTZDREtMcnJlOVZ1MGV3NVIyU0p4QUZlNWhTSU1pU3IrSStrNks3WWRCCnI1dzhldjZ1SFVEZ0Z0RTVQT1dNOHU5MGxPK0ZSSDBTSER2VWhLNllxQXJoTFh6enhXdW13NmV0ZGF0YnhyTkYKMGpVNWpwanNRbGZqSTZYYUhGazNId2FwUlNDMjFDek01QXhRcE53UnF5RU5SbFNncG1IalMvQ3RTc0V5aFlaeQppRmVoNHpCc0szVWd5VlA4R0wyN2pScmtoVDVzQTNqRWpiWnk5MzNHYnNuK3o3eFRkcmltblBZelUreHNZaWtkCmtmLzM0Y1UyOUdhZ204N1M2cHl2MUxTbkJ3SURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQWdRd0R3WUQKVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVU0akU2OVJyM05FQjNQaHRjMGJpMjFWa1k0QXN3RFFZSgpLb1pJaHZjTkFRRUxCUUFEZ2dHQkFKbUExbnJJSlNRMThKTWQvS2xiY1pZeFhVbU91UTdtcjdXWTNLSUp5QzI3CmlQZ3htZWhyRVlSbEFBYU5jVCsyQUlndlR5YmphaEFrdWxnRERBZFJPb29IT1hHZnZLcnYybFJsalhua1FqUVQKeXdoZWVIZkxwd29rYXY1aDB6bDJtTkFZaGpINHliWDM4M1N2aElWLzJRTjhNcXRuNDE1a1dJV1d0ZklCZ3J6eApxanhXYWErM3g2UWFKTTh1enRNZzF0Rlg2dFB4UFdFQTFQUHZCRDB1Zlc1SzQ0S2JGeElnNm1xdkdGNnpPUTRnCkxUWDNwdUZWQkRuZUpXbkRQK3JyY3ZBNytqeXMwM3hGMVFyNnJ2djZpK3RDcnRpVmk4cG5vTldLS3NDS2QvQWsKUjVjbHhsOHdjbXpFcjFiSGczdFhRMFVQVENQUU1UM0xnTGdZU2tkOXFaMS9TVmhBZzJhMkNFNldYbzhBYTlaTQpjV0lMdTNYZjR4Y3dSWEtOM1hXSEJjUzlnRGFZdXp2Qmh1R1BlZ3BKOGdiczhWYWhKYXBoVFhyU1k3akNGOVRmCi9Najl0YVY0VGQwOXRQUXUycnpJT3N6U3pDKzhBa0thV1hyYy9uZUhVT2RMenovcThvNG1adVg2TWpPR0RTbjgKakVQenNPWlg3NW9EdFdPZ3FyT1VIZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+  },
+  "masterAuthorizedNetworksConfig": {
+    "gcpPublicCidrsAccessEnabled": true
+  },
+  "monitoringConfig": {
+    "advancedDatapathObservabilityConfig": {
+      "enableMetrics": true
+    },
+    "componentConfig": {
+      "enableComponents": [
+        "SYSTEM_COMPONENTS",
+        "STORAGE",
+        "POD",
+        "DEPLOYMENT",
+        "STATEFULSET",
+        "DAEMONSET",
+        "HPA"
+      ]
+    },
+    "managedPrometheusConfig": {
+      "enabled": true
+    }
+  },
+  "monitoringService": "monitoring.googleapis.com/kubernetes",
+  "name": "heardit-cluster-1",
+  "network": "default",
+  "networkConfig": {
+    "datapathProvider": "ADVANCED_DATAPATH",
+    "defaultSnatStatus": {},
+    "dnsConfig": {
+      "clusterDns": "CLOUD_DNS",
+      "clusterDnsDomain": "cluster.local",
+      "clusterDnsScope": "CLUSTER_SCOPE"
+    },
+    "enableIntraNodeVisibility": true,
+    "gatewayApiConfig": {
+      "channel": "CHANNEL_STANDARD"
+    },
+    "network": "projects/heardit-k8s/global/networks/default",
+    "serviceExternalIpsConfig": {},
+    "subnetwork": "projects/heardit-k8s/regions/europe-west3/subnetworks/default"
+  },
+  "nodeConfig": {
+    "diskSizeGb": 100,
+    "diskType": "pd-balanced",
+    "imageType": "COS_CONTAINERD",
+    "machineType": "e2-small",
+    "metadata": {
+      "disable-legacy-endpoints": "true"
+    },
+    "oauthScopes": [
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/service.management.readonly",
+      "https://www.googleapis.com/auth/servicecontrol",
+      "https://www.googleapis.com/auth/trace.append"
+    ],
+    "reservationAffinity": {
+      "consumeReservationType": "NO_RESERVATION"
+    },
+    "serviceAccount": "default",
+    "shieldedInstanceConfig": {
+      "enableIntegrityMonitoring": true,
+      "enableSecureBoot": true
+    },
+    "taints": [
+      {
+        "effect": "NO_SCHEDULE",
+        "key": "cloud.google.com/gke-quick-remove",
+        "value": "true"
+      }
+    ],
+    "windowsNodeConfig": {},
+    "workloadMetadataConfig": {
+      "mode": "GKE_METADATA"
+    }
+  },
+  "nodePoolDefaults": {
+    "nodeConfigDefaults": {
+      "gcfsConfig": {
+        "enabled": true
+      },
+      "loggingConfig": {
+        "variantConfig": {
+          "variant": "DEFAULT"
+        }
+      }
+    }
+  },
+  "nodePools": [
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-small",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "taints": [
+          {
+            "effect": "NO_SCHEDULE",
+            "key": "cloud.google.com/gke-quick-remove",
+            "value": "true"
+          }
+        ],
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "f76b6958-9f1c-4afd-8eeb-5236776cbe60",
+      "initialNodeCount": 1,
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-default-pool-56cdeace-grp"
+      ],
+      "locations": [
+        "europe-west3-a"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "default-pool",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/default-pool",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-medium",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "f9df4546-8f45-49d7-bd52-a9043cd3c1b3",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-823444be-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-96854d7b-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-29007ef5-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-1",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-1",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-2",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "a2245c43-bae7-452e-9fbf-d8210b24843f",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-331b6fa7-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-a733c3ac-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-92541b13-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-2",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-2",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-4",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "fa1011f6-c853-450f-9f38-8bf0a9f586e2",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-9594d142-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-ef580376-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-15de334d-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-3",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-3",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-8",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "b82f01ea-36fa-4a4a-961d-7dcdff9967c7",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-6b87177f-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-d8f675f2-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-24bc3db3-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-4",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-4",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-16",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "1188db1c-57d8-4a7e-8150-5d3715e07d3d",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-9eebf3ac-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-7abebf51-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-3662b250-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-5",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-5",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 100,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-32",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "d7a14153-9281-4ac9-af1f-bdf43dfe399e",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-82084600-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-590ff646-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-7067ecb7-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "pool-6",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-6",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    },
+    {
+      "autoscaling": {
+        "autoprovisioned": true,
+        "enabled": true,
+        "locationPolicy": "BALANCED",
+        "maxNodeCount": 1000
+      },
+      "config": {
+        "diskSizeGb": 250,
+        "diskType": "pd-balanced",
+        "imageType": "COS_CONTAINERD",
+        "machineType": "e2-standard-2",
+        "metadata": {
+          "disable-legacy-endpoints": "true"
+        },
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/devstorage.read_only",
+          "https://www.googleapis.com/auth/logging.write",
+          "https://www.googleapis.com/auth/monitoring",
+          "https://www.googleapis.com/auth/service.management.readonly",
+          "https://www.googleapis.com/auth/servicecontrol",
+          "https://www.googleapis.com/auth/trace.append"
+        ],
+        "reservationAffinity": {
+          "consumeReservationType": "NO_RESERVATION"
+        },
+        "serviceAccount": "default",
+        "shieldedInstanceConfig": {
+          "enableIntegrityMonitoring": true,
+          "enableSecureBoot": true
+        },
+        "windowsNodeConfig": {},
+        "workloadMetadataConfig": {
+          "mode": "GKE_METADATA"
+        }
+      },
+      "etag": "b514e881-054c-4ded-9f23-b15bfd6d3b00",
+      "instanceGroupUrls": [
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-a17da28b-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-grp",
+        "https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-grp"
+      ],
+      "locations": [
+        "europe-west3-a",
+        "europe-west3-b",
+        "europe-west3-c"
+      ],
+      "management": {
+        "autoRepair": true,
+        "autoUpgrade": true
+      },
+      "maxPodsConstraint": {
+        "maxPodsPerNode": "32"
+      },
+      "name": "nap-6vix9ug9",
+      "networkConfig": {
+        "enablePrivateNodes": false,
+        "podIpv4CidrBlock": "10.46.128.0/17",
+        "podIpv4RangeUtilization": 0.0039,
+        "podRange": "gke-heardit-cluster-1-pods-ee2e590e"
+      },
+      "placementPolicy": {},
+      "podIpv4CidrSize": 26,
+      "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/nap-6vix9ug9",
+      "status": "RUNNING",
+      "upgradeSettings": {
+        "maxSurge": 1,
+        "strategy": "SURGE"
+      },
+      "version": "1.28.7-gke.1026000"
+    }
+  ],
+  "notificationConfig": {
+    "pubsub": {}
+  },
+  "privateClusterConfig": {
+    "privateEndpoint": "10.156.0.2",
+    "publicEndpoint": "35.234.110.92"
+  },
+  "releaseChannel": {
+    "channel": "REGULAR"
+  },
+  "securityPostureConfig": {
+    "mode": "BASIC",
+    "vulnerabilityMode": "VULNERABILITY_BASIC"
+  },
+  "selfLink": "https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1",
+  "servicesIpv4Cidr": "34.118.224.0/20",
+  "shieldedNodes": {
+    "enabled": true
+  },
+  "status": "RUNNING",
+  "subnetwork": "default",
+  "verticalPodAutoscaling": {
+    "enabled": true
+  },
+  "workloadIdentityConfig": {
+    "workloadPool": "heardit-k8s.svc.id.goog"
+  },
+  "zone": "europe-west3"
+}
+
+E:\k8s_testing\GoogleCloudSDK>
+
+Welcome to the Google Cloud CLI! Run "gcloud -h" to get the list of available commands.
+---
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                  ACCEPTED   AGE
+gke-l7-global-external-managed     networking.gke.io/gateway   True       21h
+gke-l7-gxlb                        networking.gke.io/gateway   True       21h
+gke-l7-regional-external-managed   networking.gke.io/gateway   True       21h
+gke-l7-rilb                        networking.gke.io/gateway   True       21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           21h
+search-service   1/1     1            1           18h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+kubernetes       ClusterIP      34.118.224.1     <none>          443/TCP          21h
+mysql-1          ClusterIP      34.118.225.129   <none>          3306/TCP         21h
+search-service   LoadBalancer   34.118.235.118   34.89.218.176   8081:30195/TCP   18h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f https://github.com/envoyproxy/gateway/releases/download/latest/install.yaml
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io created
+Warning: resource customresourcedefinitions/gatewayclasses.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io configured
+Warning: resource customresourcedefinitions/gateways.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io configured
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io created
+Warning: resource customresourcedefinitions/httproutes.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/httproutes.gateway.networking.k8s.io configured
+Warning: resource customresourcedefinitions/referencegrants.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/referencegrants.gateway.networking.k8s.io configured
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/backendtrafficpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/clienttrafficpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/envoyextensionpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/envoypatchpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/securitypolicies.gateway.envoyproxy.io created
+namespace/envoy-gateway-system created
+serviceaccount/envoy-gateway created
+configmap/envoy-gateway-config created
+clusterrole.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-role created
+clusterrolebinding.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-rolebinding created
+role.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager created
+role.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-role created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-rolebinding created
+service/envoy-gateway created
+deployment.apps/envoy-gateway created
+serviceaccount/eg-gateway-helm-certgen created
+role.rbac.authorization.k8s.io/eg-gateway-helm-certgen created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-certgen created
+job.batch/eg-gateway-helm-certgen created
+The CustomResourceDefinition "envoyproxies.gateway.envoyproxy.io" is invalid: metadata.annotations: Too long: must have at most 262144 bytes
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:80 &
+error: Service envoy-gateway does not have a service port 80
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                  ACCEPTED   AGE
+gke-l7-global-external-managed     networking.gke.io/gateway   True       22h
+gke-l7-gxlb                        networking.gke.io/gateway   True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway   True       22h
+gke-l7-rilb                        networking.gke.io/gateway   True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get envoy-gateway-system
+error: the server doesn't have a resource type "envoy-gateway-system"
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service configured
+gatewayclass.gateway.networking.k8s.io/eg created
+gateway.gateway.networking.k8s.io/eg created
+httproute.gateway.networking.k8s.io/search-service created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    25s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      34s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      2m30s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      5m53s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    6m7s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:80 &
+error: Service envoy-gateway does not have a service port 80
+
+E:\k8s_testing\GoogleCloudSDK>
+E:\k8s_testing\GoogleCloudSDK>export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    7m35s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      7m39s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get statefulsets
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl describe gatewayclass eg
+Name:         eg
+Namespace:
+Labels:       <none>
+Annotations:  <none>
+API Version:  gateway.networking.k8s.io/v1
+Kind:         GatewayClass
+Metadata:
+  Creation Timestamp:  2024-05-10T08:55:05Z
+  Generation:          1
+  Managed Fields:
+    API Version:  gateway.networking.k8s.io/v1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:controllerName:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2024-05-10T08:55:05Z
+  Resource Version:  1098509
+  UID:               5f791db2-a5ab-49c6-95b2-42d430924fc6
+Spec:
+  Controller Name:  gateway.envoyproxy.io/gatewayclass-controller
+Status:
+  Conditions:
+    Last Transition Time:  1970-01-01T00:00:00Z
+    Message:               Waiting for controller
+    Reason:                Waiting
+    Status:                Unknown
+    Type:                  Accepted
+Events:                    <none>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
+deployment.apps/envoy-gateway condition met
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      13m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP    22h
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP   22h
+search-service   ClusterIP   34.118.235.118   <none>        8081/TCP   19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      14m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      25m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/search-service configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      27m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    27m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    27m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      27m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl describe gatewayclass eg
+Name:         eg
+Namespace:
+Labels:       <none>
+Annotations:  <none>
+API Version:  gateway.networking.k8s.io/v1
+Kind:         GatewayClass
+Metadata:
+  Creation Timestamp:  2024-05-10T08:55:05Z
+  Generation:          1
+  Managed Fields:
+    API Version:  gateway.networking.k8s.io/v1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:controllerName:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2024-05-10T08:55:05Z
+  Resource Version:  1098509
+  UID:               5f791db2-a5ab-49c6-95b2-42d430924fc6
+Spec:
+  Controller Name:  gateway.envoyproxy.io/gatewayclass-controller
+Status:
+  Conditions:
+    Last Transition Time:  1970-01-01T00:00:00Z
+    Message:               Waiting for controller
+    Reason:                Waiting
+    Status:                Unknown
+    Type:                  Accepted
+Events:                    <none>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config view --minify --output 'jsonpath={..namespace}'
+error: unable to match a printer suitable for the output format "'jsonpath={..namespace}'", allowed formats are: go-template,go-template-file,json,jsonpath,jsonpath-as-json,jsonpath-file,name,template,templatefile,yaml
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config current-context
+gke_heardit-k8s_europe-west3_heardit-cluster-1
+
+E:\k8s_testing\GoogleCloudSDK> export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>set export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+
+E:\k8s_testing\GoogleCloudSDK>'export' is not recognized as an internal or external command,
+''export'' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>operable program or batch file.export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'operable' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>'export' is not recognized as an internal or external command,
+''export'' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>set ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      32m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    33m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    38m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       23h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       23h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       23h
+gke-l7-rilb                        networking.gke.io/gateway                       True       23h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get nodes --output name
+node/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-9ns5
+node/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-j98r
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    52m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       23h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       23h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       23h
+gke-l7-rilb                        networking.gke.io/gateway                       True       23h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      52m
+
+E:\k8s_testing\GoogleCloudSDK>
+
+
+
+Welcome to the Google Cloud CLI! Run "gcloud -h" to get the list of available commands.
+---
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                  ACCEPTED   AGE
+gke-l7-global-external-managed     networking.gke.io/gateway   True       21h
+gke-l7-gxlb                        networking.gke.io/gateway   True       21h
+gke-l7-regional-external-managed   networking.gke.io/gateway   True       21h
+gke-l7-rilb                        networking.gke.io/gateway   True       21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           21h
+search-service   1/1     1            1           18h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+kubernetes       ClusterIP      34.118.224.1     <none>          443/TCP          21h
+mysql-1          ClusterIP      34.118.225.129   <none>          3306/TCP         21h
+search-service   LoadBalancer   34.118.235.118   34.89.218.176   8081:30195/TCP   18h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f https://github.com/envoyproxy/gateway/releases/download/latest/install.yaml
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io created
+Warning: resource customresourcedefinitions/gatewayclasses.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io configured
+Warning: resource customresourcedefinitions/gateways.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io configured
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io created
+Warning: resource customresourcedefinitions/httproutes.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/httproutes.gateway.networking.k8s.io configured
+Warning: resource customresourcedefinitions/referencegrants.gateway.networking.k8s.io is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+customresourcedefinition.apiextensions.k8s.io/referencegrants.gateway.networking.k8s.io configured
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/backendtrafficpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/clienttrafficpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/envoyextensionpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/envoypatchpolicies.gateway.envoyproxy.io created
+customresourcedefinition.apiextensions.k8s.io/securitypolicies.gateway.envoyproxy.io created
+namespace/envoy-gateway-system created
+serviceaccount/envoy-gateway created
+configmap/envoy-gateway-config created
+clusterrole.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-role created
+clusterrolebinding.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-rolebinding created
+role.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager created
+role.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-role created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-rolebinding created
+service/envoy-gateway created
+deployment.apps/envoy-gateway created
+serviceaccount/eg-gateway-helm-certgen created
+role.rbac.authorization.k8s.io/eg-gateway-helm-certgen created
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-certgen created
+job.batch/eg-gateway-helm-certgen created
+The CustomResourceDefinition "envoyproxies.gateway.envoyproxy.io" is invalid: metadata.annotations: Too long: must have at most 262144 bytes
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:80 &
+error: Service envoy-gateway does not have a service port 80
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                  ACCEPTED   AGE
+gke-l7-global-external-managed     networking.gke.io/gateway   True       22h
+gke-l7-gxlb                        networking.gke.io/gateway   True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway   True       22h
+gke-l7-rilb                        networking.gke.io/gateway   True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get envoy-gateway-system
+error: the server doesn't have a resource type "envoy-gateway-system"
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service configured
+gatewayclass.gateway.networking.k8s.io/eg created
+gateway.gateway.networking.k8s.io/eg created
+httproute.gateway.networking.k8s.io/search-service created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    25s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      34s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      2m30s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      5m53s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    6m7s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:80 &
+error: Service envoy-gateway does not have a service port 80
+
+E:\k8s_testing\GoogleCloudSDK>
+E:\k8s_testing\GoogleCloudSDK>export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    7m35s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      7m39s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get statefulsets
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl describe gatewayclass eg
+Name:         eg
+Namespace:
+Labels:       <none>
+Annotations:  <none>
+API Version:  gateway.networking.k8s.io/v1
+Kind:         GatewayClass
+Metadata:
+  Creation Timestamp:  2024-05-10T08:55:05Z
+  Generation:          1
+  Managed Fields:
+    API Version:  gateway.networking.k8s.io/v1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:controllerName:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2024-05-10T08:55:05Z
+  Resource Version:  1098509
+  UID:               5f791db2-a5ab-49c6-95b2-42d430924fc6
+Spec:
+  Controller Name:  gateway.envoyproxy.io/gatewayclass-controller
+Status:
+  Conditions:
+    Last Transition Time:  1970-01-01T00:00:00Z
+    Message:               Waiting for controller
+    Reason:                Waiting
+    Status:                Unknown
+    Type:                  Accepted
+Events:                    <none>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
+deployment.apps/envoy-gateway condition met
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           22h
+search-service   1/1     1            1           19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      13m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP    22h
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP   22h
+search-service   ClusterIP   34.118.235.118   <none>        8081/TCP   19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      14m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          22h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          19h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      25m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/search-service configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      27m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    27m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    27m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      27m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl describe gatewayclass eg
+Name:         eg
+Namespace:
+Labels:       <none>
+Annotations:  <none>
+API Version:  gateway.networking.k8s.io/v1
+Kind:         GatewayClass
+Metadata:
+  Creation Timestamp:  2024-05-10T08:55:05Z
+  Generation:          1
+  Managed Fields:
+    API Version:  gateway.networking.k8s.io/v1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:controllerName:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2024-05-10T08:55:05Z
+  Resource Version:  1098509
+  UID:               5f791db2-a5ab-49c6-95b2-42d430924fc6
+Spec:
+  Controller Name:  gateway.envoyproxy.io/gatewayclass-controller
+Status:
+  Conditions:
+    Last Transition Time:  1970-01-01T00:00:00Z
+    Message:               Waiting for controller
+    Reason:                Waiting
+    Status:                Unknown
+    Type:                  Accepted
+Events:                    <none>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config view --minify --output 'jsonpath={..namespace}'
+error: unable to match a printer suitable for the output format "'jsonpath={..namespace}'", allowed formats are: go-template,go-template-file,json,jsonpath,jsonpath-as-json,jsonpath-file,name,template,templatefile,yaml
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config current-context
+gke_heardit-k8s_europe-west3_heardit-cluster-1
+
+E:\k8s_testing\GoogleCloudSDK> export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>set export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+
+E:\k8s_testing\GoogleCloudSDK>'export' is not recognized as an internal or external command,
+''export'' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>operable program or batch file.export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'operable' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>'export' is not recognized as an internal or external command,
+''export'' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>set ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      32m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    33m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       22h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       22h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       22h
+gke-l7-rilb                        networking.gke.io/gateway                       True       22h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    38m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       23h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       23h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       23h
+gke-l7-rilb                        networking.gke.io/gateway                       True       23h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get nodes --output name
+node/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-9ns5
+node/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-j98r
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    52m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       23h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       23h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       23h
+gke-l7-rilb                        networking.gke.io/gateway                       True       23h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      52m
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container fleet memberships list
+API [gkehub.googleapis.com] not enabled on project [heardit-k8s]. Would you like to enable and retry (this will take a few minutes)? (y/N)?  N
+
+ERROR: (gcloud.container.fleet.memberships.list) PERMISSION_DENIED: GKE Hub API has not been used in project heardit-k8s before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/gkehub.googleapis.com/overview?project=heardit-k8s then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+- '@type': type.googleapis.com/google.rpc.Help
+  links:
+  - description: Google developers console API activation
+    url: https://console.developers.google.com/apis/api/gkehub.googleapis.com/overview?project=heardit-k8s
+- '@type': type.googleapis.com/google.rpc.ErrorInfo
+  domain: googleapis.com
+  metadata:
+    consumer: projects/heardit-k8s
+    service: gkehub.googleapis.com
+  reason: SERVICE_DISABLED
+
+E:\k8s_testing\GoogleCloudSDK>kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
+deployment.apps/envoy-gateway condition met
+
+E:\k8s_testing\GoogleCloudSDK>
+E:\k8s_testing\GoogleCloudSDK>export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>export ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+'export' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>set ENVOY_SERVICE=$(kubectl get svc -n envoy-gateway-system --selector=gateway.envoyproxy.io/owning-gateway-namespace=default,gateway.envoyproxy.io/owning-gateway-name=eg -o jsonpath='{.items[0].metadata.name}')
+
+E:\k8s_testing\GoogleCloudSDK>get ENVOY_SERVICE
+'get' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      109m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    109m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       24h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       24h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       24h
+gke-l7-rilb                        networking.gke.io/gateway                       True       24h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   113m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg configured
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/backend created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      111m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP    24h
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP   24h
+search-service   ClusterIP   34.118.235.118   <none>        8081/TCP   21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          24h
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    111m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       24h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       24h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       24h
+gke-l7-rilb                        networking.gke.io/gateway                       True       24h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   116m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:80 &
+error: Service envoy-gateway does not have a service port 80
+
+E:\k8s_testing\GoogleCloudSDK>kubectl -n envoy-gateway-system port-forward service/envoy-gateway 8888:18000 &
+Forwarding from 127.0.0.1:8888 -> 18000
+Forwarding from [::1]:8888 -> 18000
+
+E:\k8s_testing\GoogleCloudSDK>kubectl describe pod search-service-ccdb45cdc-8nk7j
+Name:             search-service-ccdb45cdc-8nk7j
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-9ns5/10.156.0.5
+Start Time:       Thu, 09 May 2024 15:27:14 +0200
+Labels:           app=search-service
+                  pod-template-hash=ccdb45cdc
+Annotations:      <none>
+Status:           Running
+IP:               10.46.128.77
+IPs:
+  IP:           10.46.128.77
+Controlled By:  ReplicaSet/search-service-ccdb45cdc
+Containers:
+  search-service:
+    Container ID:   containerd://e15882aef99aa35cb911bb89c263aee14546e28a307a75228b5894754071326c
+    Image:          jumorto/heardit-search-service:latest
+    Image ID:       docker.io/jumorto/heardit-search-service@sha256:c57d40b2f9d2bcd2d89b0528adf0177ace1e15ae9876c5a40981589b0d0fa667
+    Port:           8081/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 09 May 2024 15:27:30 +0200
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:                500m
+      ephemeral-storage:  1Gi
+      memory:             2Gi
+    Requests:
+      cpu:                500m
+      ephemeral-storage:  1Gi
+      memory:             2Gi
+    Environment:          <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-tczs2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-tczs2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Guaranteed
+Node-Selectors:              <none>
+Tolerations:                 kubernetes.io/arch=amd64:NoSchedule
+                             node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/backend configured
+The request is invalid: patch: Invalid value: "{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"kind\":\"Gateway\",\"metadata\":{\"annotations\":{\"kubectl.kubernetes.io/last-applied-configuration\":\"{\\\"apiVersion\\\":\\\"gateway.networking.k8s.io/v1\\\",\\\"kind\\\":\\\"Gateway\\\",\\\"metadata\\\":{\\\"annotations\\\":{},\\\"name\\\":\\\"eg\\\",\\\"namespace\\\":\\\"default\\\"},\\\"spec\\\":{\\\"gatewayClassName\\\":\\\"eg\\\",\\\"listeners\\\":[{\\\"name\\\":\\\"http\\\",\\\"port\\\":80,\\\"protocol\\\":\\\"HTTP\\\"}],\\\"type\\\":\\\"LoadBalancer\\\"}}\\n\"},\"creationTimestamp\":\"2024-05-10T08:55:05Z\",\"generation\":3,\"managedFields\":[{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{}},\"f:spec\":{\".\":{},\"f:gatewayClassName\":{},\"f:listeners\":{\".\":{},\"k:{\\\"name\\\":\\\"http\\\"}\":{\".\":{},\"f:allowedRoutes\":{\".\":{},\"f:namespaces\":{\".\":{},\"f:from\":{}}},\"f:name\":{},\"f:protocol\":{}}}}},\"manager\":\"kubectl-client-side-apply\",\"operation\":\"Update\",\"time\":\"2024-05-10T09:22:10Z\"},{\"apiVersion\":\"gateway.networking.k8s.io/v1beta1\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\"f:kubectl.kubernetes.io/last-applied-configuration\":{}}},\"f:spec\":{\"f:listeners\":{\"k:{\\\"name\\\":\\\"http\\\"}\":{\"f:port\":{}}}}},\"manager\":\"kubectl-client-side-apply\",\"operation\":\"Update\",\"time\":\"2024-05-10T10:46:37Z\"}],\"name\":\"eg\",\"namespace\":\"default\",\"resourceVersion\":\"1190938\",\"uid\":\"7e1253db-8671-4584-b2f3-1ac638bb4e2b\"},\"spec\":{\"gatewayClassName\":\"eg\",\"listeners\":[{\"name\":\"http\",\"port\":80,\"protocol\":\"HTTP\"}],\"type\":\"LoadBalancer\"},\"status\":{\"conditions\":[{\"lastTransitionTime\":\"1970-01-01T00:00:00Z\",\"message\":\"Waiting for controller\",\"reason\":\"Pending\",\"status\":\"Unknown\",\"type\":\"Accepted\"},{\"lastTransitionTime\":\"1970-01-01T00:00:00Z\",\"message\":\"Waiting for controller\",\"reason\":\"Pending\",\"status\":\"Unknown\",\"type\":\"Programmed\"}]}}": strict decoding error: unknown field "spec.type"
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/backend configured
+The request is invalid: patch: Invalid value: "{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"kind\":\"GatewayClass\",\"metadata\":{\"annotations\":{\"kubectl.kubernetes.io/last-applied-configuration\":\"{\\\"apiVersion\\\":\\\"gateway.networking.k8s.io/v1\\\",\\\"kind\\\":\\\"GatewayClass\\\",\\\"metadata\\\":{\\\"annotations\\\":{},\\\"name\\\":\\\"eg\\\"},\\\"spec\\\":{\\\"controllerName\\\":\\\"gateway.envoyproxy.io/gatewayclass-controller\\\",\\\"type\\\":\\\"LoadBalancer\\\"}}\\n\"},\"creationTimestamp\":\"2024-05-10T08:55:05Z\",\"generation\":1,\"managedFields\":[{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:kubectl.kubernetes.io/last-applied-configuration\":{}}},\"f:spec\":{\".\":{},\"f:controllerName\":{}}},\"manager\":\"kubectl-client-side-apply\",\"operation\":\"Update\",\"time\":\"2024-05-10T11:00:51Z\"}],\"name\":\"eg\",\"resourceVersion\":\"1202708\",\"uid\":\"5f791db2-a5ab-49c6-95b2-42d430924fc6\"},\"spec\":{\"controllerName\":\"gateway.envoyproxy.io/gatewayclass-controller\",\"type\":\"LoadBalancer\"},\"status\":{\"conditions\":[{\"lastTransitionTime\":\"1970-01-01T00:00:00Z\",\"message\":\"Waiting for controller\",\"reason\":\"Waiting\",\"status\":\"Unknown\",\"type\":\"Accepted\"}]}}": strict decoding error: unknown field "spec.type"
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   130m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   Unknown    126m
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       24h
+gke-l7-gxlb                        networking.gke.io/gateway                       True       24h
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       24h
+gke-l7-rilb                        networking.gke.io/gateway                       True       24h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                Unknown      126m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           24h
+search-service   1/1     1            1           21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql configured
+service/mysql-1 unchanged
+deployment.apps/search-service configured
+service/search-service unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/backend configured
+The request is invalid: patch: Invalid value: "{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"kind\":\"GatewayClass\",\"metadata\":{\"annotations\":{\"kubectl.kubernetes.io/last-applied-configuration\":\"{\\\"apiVersion\\\":\\\"gateway.networking.k8s.io/v1\\\",\\\"kind\\\":\\\"GatewayClass\\\",\\\"metadata\\\":{\\\"annotations\\\":{},\\\"name\\\":\\\"eg\\\"},\\\"spec\\\":{\\\"controllerName\\\":\\\"gateway.envoyproxy.io/gatewayclass-controller\\\",\\\"type\\\":\\\"LoadBalancer\\\"}}\\n\"},\"creationTimestamp\":\"2024-05-10T08:55:05Z\",\"generation\":1,\"managedFields\":[{\"apiVersion\":\"gateway.networking.k8s.io/v1\",\"fieldsType\":\"FieldsV1\",\"fieldsV1\":{\"f:metadata\":{\"f:annotations\":{\".\":{},\"f:kubectl.kubernetes.io/last-applied-configuration\":{}}},\"f:spec\":{\".\":{},\"f:controllerName\":{}}},\"manager\":\"kubectl-client-side-apply\",\"operation\":\"Update\",\"time\":\"2024-05-10T11:00:51Z\"}],\"name\":\"eg\",\"resourceVersion\":\"1202708\",\"uid\":\"5f791db2-a5ab-49c6-95b2-42d430924fc6\"},\"spec\":{\"controllerName\":\"gateway.envoyproxy.io/gatewayclass-controller\",\"type\":\"LoadBalancer\"},\"status\":{\"conditions\":[{\"lastTransitionTime\":\"1970-01-01T00:00:00Z\",\"message\":\"Waiting for controller\",\"reason\":\"Waiting\",\"status\":\"Unknown\",\"type\":\"Accepted\"}]}}": strict decoding error: unknown field "spec.type"
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/backend configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   142m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/search-service configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   143m
+
+E:\k8s_testing\GoogleCloudSDK>
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+gatewayclass.gateway.networking.k8s.io/eg unchanged
+gateway.gateway.networking.k8s.io/eg configured
+httproute.gateway.networking.k8s.io/search-service configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   34.118.237.181   <none>        18000/TCP,18001/TCP,19001/TCP   144m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP    24h
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP   24h
+search-service   ClusterIP   34.118.235.118   <none>        8081/TCP   21h
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            0/0     0            0           24h
+search-service   0/0     0            0           21h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

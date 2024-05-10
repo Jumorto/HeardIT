@@ -1,0 +1,295 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\Misho> cd E:\k8s_testing\deployments
+PS E:\k8s_testing\deployments> kubectl apply --server-side=true -f  https://github.com/envoyproxy/gateway/releases/download/latest/install.yaml
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/httproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/referencegrants.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/clienttrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyextensionpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoypatchpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyproxies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/securitypolicies.gateway.envoyproxy.io serverside-applied
+namespace/envoy-gateway-system serverside-applied
+serviceaccount/envoy-gateway serverside-applied
+configmap/envoy-gateway-config serverside-applied
+clusterrole.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-role serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-rolebinding serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-role serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-rolebinding serverside-applied
+service/envoy-gateway serverside-applied
+deployment.apps/envoy-gateway serverside-applied
+serviceaccount/eg-gateway-helm-certgen serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+job.batch/eg-gateway-helm-certgen serverside-applied
+PS E:\k8s_testing\deployments> kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   10m
+PS E:\k8s_testing\deployments> kubectl get service -n envoy-gateway-system
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                         AGE
+envoy-gateway   ClusterIP   10.101.84.178   <none>        18000/TCP,18001/TCP,19001/TCP   84s
+PS E:\k8s_testing\deployments> kubectl apply -f hearditgke.yaml
+deployment.apps/mysql created
+service/mysql-1 created
+deployment.apps/search-service created
+service/search-service created
+gatewayclass.gateway.networking.k8s.io/eg created
+gateway.gateway.networking.k8s.io/eg created
+httproute.gateway.networking.k8s.io/search-service created
+PS E:\k8s_testing\deployments> kubectl get services
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   10.96.0.1       <none>        443/TCP    12m
+mysql-1          ClusterIP   10.98.208.92    <none>        3306/TCP   7s
+search-service   ClusterIP   10.105.105.99   <none>        8081/TCP   7s
+PS E:\k8s_testing\deployments> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           16s
+search-service   0/1     1            0           16s
+PS E:\k8s_testing\deployments> kubectl get gatewayclasses
+NAME   CONTROLLER                                      ACCEPTED   AGE
+eg     gateway.envoyproxy.io/gatewayclass-controller   True       26s
+PS E:\k8s_testing\deployments> kubectl get gateways
+NAME   CLASS   ADDRESS     PROGRAMMED   AGE
+eg     eg      127.0.0.1   False        34s
+PS E:\k8s_testing\deployments> kubectl get gateways
+NAME   CLASS   ADDRESS     PROGRAMMED   AGE
+eg     eg      127.0.0.1   True         2m50s
+PS E:\k8s_testing\deployments> kubectl get gateways
+NAME   CLASS   ADDRESS     PROGRAMMED   AGE
+eg     eg      127.0.0.1   True         2m54s
+PS E:\k8s_testing\deployments>
+
+
+Welcome to the Google Cloud CLI! Run "gcloud -h" to get the list of available commands.
+---
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config get-contexts
+CURRENT   NAME                                             CLUSTER                                          AUTHINFO                                         NAMESPACE
+          docker-desktop                                   docker-desktop                                   docker-desktop
+*         gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   <namespace>
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/region europe-west4
+WARNING: Property validation for compute/region was skipped.
+Updated property [compute/region].
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config get-contexts
+CURRENT   NAME                                             CLUSTER                                          AUTHINFO                                         NAMESPACE
+          docker-desktop                                   docker-desktop                                   docker-desktop
+*         gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   <namespace>
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/zone europe-west4
+WARNING: europe-west4 is not a valid zone. Run `gcloud compute zones list` to get all zones.
+Are you sure you wish to set property [compute/zone] to europe-west4?
+
+Do you want to continue (Y/n)?  Y
+
+Updated property [compute/zone].
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config get-contexts
+CURRENT   NAME                                             CLUSTER                                          AUTHINFO                                         NAMESPACE
+          docker-desktop                                   docker-desktop                                   docker-desktop
+*         gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   <namespace>
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-cluster-production
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for heardit-cluster-production.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config get-contexts
+CURRENT   NAME                                                      CLUSTER                                                   AUTHINFO                                                  NAMESPACE
+          docker-desktop                                            docker-desktop                                            docker-desktop
+          gke_heardit-k8s_europe-west3_heardit-cluster-1            gke_heardit-k8s_europe-west3_heardit-cluster-1            gke_heardit-k8s_europe-west3_heardit-cluster-1            <namespace>
+*         gke_heardit-k8s_europe-west4_heardit-cluster-production   gke_heardit-k8s_europe-west4_heardit-cluster-production   gke_heardit-k8s_europe-west4_heardit-cluster-production
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config get-contexts
+CURRENT   NAME                                                      CLUSTER                                                   AUTHINFO                                                  NAMESPACE
+          docker-desktop                                            docker-desktop                                            docker-desktop                                            
+          gke_heardit-k8s_europe-west3_heardit-cluster-1            gke_heardit-k8s_europe-west3_heardit-cluster-1            gke_heardit-k8s_europe-west3_heardit-cluster-1            <namespace>
+*         gke_heardit-k8s_europe-west4_heardit-cluster-production   gke_heardit-k8s_europe-west4_heardit-cluster-production   gke_heardit-k8s_europe-west4_heardit-cluster-production   
+
+E:\k8s_testing\GoogleCloudSDK>kubectl config current-context
+gke_heardit-k8s_europe-west4_heardit-cluster-production
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply --server-side=true -f  https://github.com/envoyproxy/gateway/releases/download/latest/install.yaml
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/clienttrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyextensionpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoypatchpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyproxies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/securitypolicies.gateway.envoyproxy.io serverside-applied
+namespace/envoy-gateway-system serverside-applied
+serviceaccount/envoy-gateway serverside-applied
+configmap/envoy-gateway-config serverside-applied
+clusterrole.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-role serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-rolebinding serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-role serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-rolebinding serverside-applied
+service/envoy-gateway serverside-applied
+deployment.apps/envoy-gateway serverside-applied
+serviceaccount/eg-gateway-helm-certgen serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+job.batch/eg-gateway-helm-certgen serverside-applied
+Apply failed with 4 conflicts: conflicts with "kube-addon-manager":
+- .metadata.annotations.api-approved.kubernetes.io
+- .metadata.annotations.gateway.networking.k8s.io/bundle-version
+- .metadata.annotations.gateway.networking.k8s.io/channel
+- .spec.versions
+Please review the fields above--they currently have other managers. Here
+are the ways you can resolve this warning:
+* If you intend to manage all of these fields, please re-run the apply
+  command with the `--force-conflicts` flag.
+* If you do not intend to manage all of the fields, please edit your
+  manifest to remove references to the fields that should keep their
+  current managers.
+* You may co-own fields by updating your manifest to match the existing
+  value; in this case, you'll become the manager if the other manager(s)
+  stop managing the field (remove it from their configuration).
+See https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts
+Apply failed with 4 conflicts: conflicts with "kube-addon-manager":
+- .metadata.annotations.api-approved.kubernetes.io
+- .metadata.annotations.gateway.networking.k8s.io/bundle-version
+- .metadata.annotations.gateway.networking.k8s.io/channel
+- .spec.versions
+Please review the fields above--they currently have other managers. Here
+are the ways you can resolve this warning:
+* If you intend to manage all of these fields, please re-run the apply
+  command with the `--force-conflicts` flag.
+* If you do not intend to manage all of the fields, please edit your
+  manifest to remove references to the fields that should keep their
+  current managers.
+* You may co-own fields by updating your manifest to match the existing
+  value; in this case, you'll become the manager if the other manager(s)
+  stop managing the field (remove it from their configuration).
+See https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts
+Apply failed with 4 conflicts: conflicts with "kube-addon-manager":
+- .metadata.annotations.api-approved.kubernetes.io
+- .metadata.annotations.gateway.networking.k8s.io/bundle-version
+- .metadata.annotations.gateway.networking.k8s.io/channel
+- .spec.versions
+Please review the fields above--they currently have other managers. Here
+are the ways you can resolve this warning:
+* If you intend to manage all of these fields, please re-run the apply
+  command with the `--force-conflicts` flag.
+* If you do not intend to manage all of the fields, please edit your
+  manifest to remove references to the fields that should keep their
+  current managers.
+* You may co-own fields by updating your manifest to match the existing
+  value; in this case, you'll become the manager if the other manager(s)
+  stop managing the field (remove it from their configuration).
+See https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts
+Apply failed with 4 conflicts: conflicts with "kube-addon-manager":
+- .metadata.annotations.api-approved.kubernetes.io
+- .metadata.annotations.gateway.networking.k8s.io/bundle-version
+- .metadata.annotations.gateway.networking.k8s.io/channel
+- .spec.versions
+Please review the fields above--they currently have other managers. Here
+are the ways you can resolve this warning:
+* If you intend to manage all of these fields, please re-run the apply
+  command with the `--force-conflicts` flag.
+* If you do not intend to manage all of the fields, please edit your
+  manifest to remove references to the fields that should keep their
+  current managers.
+* You may co-own fields by updating your manifest to match the existing
+  value; in this case, you'll become the manager if the other manager(s)
+  stop managing the field (remove it from their configuration).
+See https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply --server-side=true -f  https://github.com/envoyproxy/gateway/releases/download/latest/install.yaml --force-conflicts
+customresourcedefinition.apiextensions.k8s.io/backendlbpolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtlspolicies.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/gatewayclasses.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/gateways.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/grpcroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/httproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/referencegrants.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tcproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/tlsroutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/udproutes.gateway.networking.k8s.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/backendtrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/clienttrafficpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyextensionpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoypatchpolicies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/envoyproxies.gateway.envoyproxy.io serverside-applied
+customresourcedefinition.apiextensions.k8s.io/securitypolicies.gateway.envoyproxy.io serverside-applied
+namespace/envoy-gateway-system serverside-applied
+serviceaccount/envoy-gateway serverside-applied
+configmap/envoy-gateway-config serverside-applied
+clusterrole.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-role serverside-applied
+clusterrolebinding.rbac.authorization.k8s.io/eg-gateway-helm-envoy-gateway-rolebinding serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-role serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-infra-manager serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-leader-election-rolebinding serverside-applied
+service/envoy-gateway serverside-applied
+deployment.apps/envoy-gateway serverside-applied
+serviceaccount/eg-gateway-helm-certgen serverside-applied
+role.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+rolebinding.rbac.authorization.k8s.io/eg-gateway-helm-certgen serverside-applied
+job.batch/eg-gateway-helm-certgen serverside-applied
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   12m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql created
+service/mysql-1 created
+deployment.apps/search-service created
+service/search-service created
+gatewayclass.gateway.networking.k8s.io/eg created
+gateway.gateway.networking.k8s.io/eg created
+httproute.gateway.networking.k8s.io/search-service created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP    13m
+mysql-1          ClusterIP   34.118.236.68    <none>        3306/TCP   13s
+search-service   ClusterIP   34.118.233.196   <none>        8081/TCP   13s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            0/1     1            0           24s
+search-service   0/1     1            0           24s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gatewayclasses
+NAME                               CONTROLLER                                      ACCEPTED   AGE
+eg                                 gateway.envoyproxy.io/gatewayclass-controller   True       32s
+gke-l7-global-external-managed     networking.gke.io/gateway                       True       8m41s
+gke-l7-gxlb                        networking.gke.io/gateway                       True       8m41s
+gke-l7-regional-external-managed   networking.gke.io/gateway                       True       8m41s
+gke-l7-rilb                        networking.gke.io/gateway                       True       8m41s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS   PROGRAMMED   AGE
+eg     eg                False        41s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get gateways
+NAME   CLASS   ADDRESS        PROGRAMMED   AGE
+eg     eg      34.91.167.90   True         2m22s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get service -n envoy-gateway-system
+NAME                        TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                         AGE
+envoy-default-eg-e41e7b31   LoadBalancer   34.118.232.152   34.91.167.90   80:31999/TCP                    6m25s
+envoy-gateway               ClusterIP      34.118.235.63    <none>         18000/TCP,18001/TCP,19001/TCP   9m22s

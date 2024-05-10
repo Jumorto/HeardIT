@@ -1,0 +1,10 @@
+PS C:\Users\Misho> kubectl config get-contexts
+CURRENT   NAME                                             CLUSTER                                          AUTHINFO                                         NAMESPACE
+*         docker-desktop                                   docker-desktop                                   docker-desktop
+          gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   gke_heardit-k8s_europe-west3_heardit-cluster-1   <namespace>
+
+PS C:\Users\Misho> kubectl config current-context
+docker-desktop
+
+PS C:\Users\Misho> kubectl config use-context docker-desktop
+Switched to context "docker-desktop".
