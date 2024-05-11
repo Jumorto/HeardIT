@@ -121,10 +121,10 @@ jobs:
 
             - name: Set up Google Cloud SDK
               run: |
-                  echo ${{ secrets.GCP_SA_KEY }} > key.json
+                  echo "${{ secrets.GCP_SA_KEY }}" > key.json
                   gcloud auth activate-service-account --key-file=key.json
-                  gcloud config set project ${{ env.GCP_PROJECT_ID }}
-                  gcloud config set compute/zone ${{ env.GCP_ZONE }}
+                  gcloud config set project "${{ env.GCP_PROJECT_ID }}"
+                  gcloud config set compute/zone "${{ env.GCP_ZONE }}"
 
             - name: Set up GKE
               run: |
