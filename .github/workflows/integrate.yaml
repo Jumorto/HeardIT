@@ -15,11 +15,11 @@ env:
     IMAGE_NAME: jumorto/hearditbackend-image:latest
 
 jobs:
-    build_and_test:
+    build_and_test_search_service:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: heardit_stream_service
+                working-directory: heardit_search_service
         steps:
             - name: Checkout branch
               uses: actions/checkout@v4
@@ -39,12 +39,36 @@ jobs:
             - name: Run Tests
               run: ./gradlew test
 
-    publish-docker-Hub:
+    build_and_test_songmanager_service:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: heardit_stream_service
-        needs: build_and_test
+                working-directory: heardit_songmanager_service
+        steps:
+            - name: Checkout branch
+              uses: actions/checkout@v4
+            - name: Set up JDK 17
+              uses: actions/setup-java@v4
+              with:
+                  java-version: "17"
+                  distribution: "temurin"
+
+            - name: Setup Gradle
+              uses: gradle/gradle-build-action@v3
+            - name: Make gradlew executable
+              run: chmod +x ./gradlew
+            - name: Build with Gradle Wrapper
+              run: ./gradlew build
+
+            - name: Run Tests
+              run: ./gradlew test
+
+    publish-docker-Hub-search-service:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: heardit_search_service
+        needs: build_and_test_search_service
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
@@ -56,65 +80,49 @@ jobs:
 
             - name: Build and push Docker image
               run: |
-                  docker build -t jumorto/heardit-backend .
+                  docker build -t jumorto/heardit-search-service .
                   docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
-                  docker push jumorto/heardit-backend
+                  docker push jumorto/heardit-search-service
 
-    deploy:
+    publish-docker-Hub-songmanager-service:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: heardit_stream_service
-        needs: publish-docker-Hub
+                working-directory: heardit_songmanager_service
+        needs: build_and_test_songmanager_service
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
-            - name: Checkout Repository
+            - name: Checkout repository
               uses: actions/checkout@v4
 
-            - name: Set up Google Cloud SDK
-              uses: google-github-actions/setup-gcloud@v0.3.0
-              with:
-                  version: "latest"
-                  project_id: ${{ secrets.GCP_PROJECT_ID }}
-                  service_account_key: ${{ secrets.GCP_SA_KEY }}
+            - name: Set up Docker
+              uses: docker/setup-buildx-action@v1
 
-            - name: Deploy to Cloud Run
+            - name: Build and push Docker image
               run: |
-                  gcloud run deploy heardit-backend --image=jumorto/heardit-backend:latest --platform=managed --region=europe-west4
+                  docker build -t jumorto/heardit-songmanager-service .
+                  docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
+                  docker push jumorto/heardit-songmanager-service
 
-#  publish-github-container-Registry:
-#    name: publish image
-#    runs-on: ubuntu-latest
-#    needs: build_and_test
-#
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Login
-#        run: |
-#          echo ${{ secrets.PAT_J }} | docker login ghcr.io -u jumorto --password-stdin
-#      - name: Build and Publish
-#        run: |
-#          docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-#          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+    # deploy:
+    #     runs-on: ubuntu-latest
+    #     defaults:
+    #         run:
+    #             working-directory: heardit_stream_service
+    #     needs: publish-docker-Hub
 
-#  deploy:
-#    needs: publish-github-container-Registry
-#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-#    name: deploy image
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Set up SSH keys and connect
-#        run: |
-#          mkdir -p ~/.ssh && \
-#          chmod 700 ~/.ssh && \
-#          install -m 600 /dev/null ~/.ssh/id_rsa && \
-#          echo "${{ secrets.BG_LAPTOP_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && \
-#          chmod 600 ~/.ssh/id_rsa && \
-#          ssh-keyscan -H ${{ secrets.BG_LAPTOP_HOST }} >> ~/.ssh/known_hosts && \
-#          chmod 644 ~/.ssh/known_hosts
-#      - name: connect and pull
-#        run: ssh ${{ secrets.BG_LAPTOP_USER }}@${{ secrets.BG_LAPTOP_HOST }} "cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
-#      - name: cleanup
-#        run: rm -rf ~/.ssh
+    #     steps:
+    #         - name: Checkout Repository
+    #           uses: actions/checkout@v4
 
+    #         - name: Set up Google Cloud SDK
+    #           uses: google-github-actions/setup-gcloud@v0.3.0
+    #           with:
+    #               version: "latest"
+    #               project_id: ${{ secrets.GCP_PROJECT_ID }}
+    #               service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+    #         - name: Deploy to Cloud Run
+    #           run: |
+    #               gcloud run deploy heardit-backend --image=jumorto/heardit-backend:latest --platform=managed --region=europe-west4
