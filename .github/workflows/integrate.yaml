@@ -127,12 +127,8 @@ jobs:
                   gcloud config set compute/zone ${{ env.GCP_ZONE }}
 
             - name: Set up GKE
-              uses: GoogleCloudPlatform/github-actions/setup-gke@v0.4.0
-              with:
-                  credentials: ${{ secrets.GCP_SA_KEY }}
-                  project_id: ${{ env.GCP_PROJECT_ID }}
-                  location: ${{ env.GCP_ZONE }}
-                  cluster_name: ${{ env.CLUSTER_NAME }}
+              run: |
+                  gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --zone ${{ env.GCP_ZONE }} --project ${{ env.GCP_PROJECT_ID }}
 
             - name: Apply Kubernetes configuration
               run: |
