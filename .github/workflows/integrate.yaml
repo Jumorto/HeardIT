@@ -9,7 +9,6 @@ on:
 
 env:
     REGISTRY: ghcr.io
-    IMAGE_NAME: jumorto/hearditbackend-image:latest
     GCP_ZONE: europe-west4
     CLUSTER_NAME: heardit-cluster-production
 
@@ -127,13 +126,13 @@ jobs:
                   service_account_key: ${{ secrets.GCP_SA_KEY }}
                   export_default_credentials: true
 
-            - name: Configure kubectl
-              uses: azure/k8s-set-context@v1
+            - name: Set up GKE
+              uses: GoogleCloudPlatform/github-actions/setup-gke@v0.4.0
               with:
-                  method: gke
                   credentials: ${{ secrets.GCP_SA_KEY }}
-                  cluster_name: ${{ env.CLUSTER_NAME }}
+                  project_id: ${{ env.GCP_PROJECT_ID }}
                   location: ${{ env.GCP_ZONE }}
+                  cluster_name: ${{ env.CLUSTER_NAME }}
 
             - name: Apply Kubernetes configuration
               run: |
