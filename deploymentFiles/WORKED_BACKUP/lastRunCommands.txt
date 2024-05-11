@@ -1,0 +1,1780 @@
+indows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\Misho> cd . .
+Set-Location : A positional parameter cannot be found that accepts argument '.'.
+At line:1 char:1
++ cd . .
++ ~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Location], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\Misho>  cd ..
+PS C:\Users> cd ..
+PS C:\> cd ..
+PS C:\> cd E:\k8s_testing\New folder
+Set-Location : A positional parameter cannot be found that accepts argument 'folder'.
+At line:1 char:1
++ cd E:\k8s_testing\New folder
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Location], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\> cd "E:\k8s_testing\New folder"
+PS E:\k8s_testing\New folder> minikube start
+W0509 08:57:39.291634   11396 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+* minikube v1.32.0 on Microsoft Windows 10 Pro 10.0.19045.4291 Build 19045.4291
+* minikube 1.33.0 is available! Download it: https://github.com/kubernetes/minikube/releases/tag/v1.33.0
+* To disable this notice, run: 'minikube config set WantUpdateNotification false'
+
+* Using the docker driver based on existing profile
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* Restarting existing docker container for "minikube" ...
+* Preparing Kubernetes v1.28.3 on Docker 24.0.7 ...
+* Configuring bridge CNI (Container Networking Interface) ...
+* Verifying Kubernetes components...
+  - Using image docker.io/kubernetesui/dashboard:v2.7.0
+  - Using image docker.io/kubernetesui/metrics-scraper:v1.0.8
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+  - Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20231011-8b53cabe0
+  - Using image registry.k8s.io/ingress-nginx/controller:v1.9.4
+  - Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20231011-8b53cabe0
+* After the addon is enabled, please run "minikube tunnel" and your ingress resources would be available at "127.0.0.1"
+  - Using image quay.io/metallb/speaker:v0.9.6
+  - Using image quay.io/metallb/controller:v0.9.6
+  - Using image gcr.io/k8s-minikube/minikube-ingress-dns:0.0.2
+* Verifying ingress addon...
+* Some dashboard features require the metrics-server addon. To enable all features please run:
+
+        minikube addons enable metrics-server
+
+
+* Enabled addons: ingress-dns, storage-provisioner, metallb, dashboard, default-storageclass, ingress
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+PS E:\k8s_testing\New folder> minikube ip
+W0509 08:58:33.598675   15956 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+192.168.49.2
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+frontend-heardit   3/3     3            3           6d18h
+heardit-backend    3/3     3            3           6d18h
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                                READY   STATUS    RESTARTS        AGE
+frontend-heardit-5f998d6996-8rgbk   1/1     Running   2 (6d15h ago)   6d18h
+frontend-heardit-5f998d6996-m58jz   1/1     Running   2 (6d15h ago)   6d18h
+frontend-heardit-5f998d6996-v6cr6   1/1     Running   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-76l5v    1/1     Running   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-8929p    1/1     Running   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-9b562    1/1     Running   2 (6d15h ago)   6d18h
+PS E:\k8s_testing\New folder> kubectl delete pods --all
+pod "frontend-heardit-5f998d6996-8rgbk" deleted
+pod "frontend-heardit-5f998d6996-m58jz" deleted
+pod "frontend-heardit-5f998d6996-v6cr6" deleted
+pod "heardit-backend-6f844946cd-76l5v" deleted
+pod "heardit-backend-6f844946cd-8929p" deleted
+pod "heardit-backend-6f844946cd-9b562" deleted
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                                READY   STATUS        RESTARTS        AGE
+frontend-heardit-5f998d6996-h2p9f   1/1     Running       0               32s
+frontend-heardit-5f998d6996-pw7w4   1/1     Running       0               32s
+frontend-heardit-5f998d6996-slkfw   1/1     Running       0               32s
+heardit-backend-6f844946cd-465ms    1/1     Running       0               32s
+heardit-backend-6f844946cd-76l5v    1/1     Terminating   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-8929p    1/1     Terminating   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-9b562    1/1     Terminating   2 (6d15h ago)   6d18h
+heardit-backend-6f844946cd-h4wkm    1/1     Running       0               32s
+heardit-backend-6f844946cd-tpqh4    1/1     Running       0               32s
+PS E:\k8s_testing\New folder> kubectl delete deployments --all
+deployment.apps "frontend-heardit" deleted
+deployment.apps "heardit-backend" deleted
+PS E:\k8s_testing\New folder> kubectl delete services --all
+service "backend-service" deleted
+service "frontend-service" deleted
+service "kubernetes" deleted
+PS E:\k8s_testing\New folder> kubectl delete ingress --all
+ingress.networking.k8s.io "frontend-ingress" deleted
+PS E:\k8s_testing\New folder> kubectl delete pods --all
+pod "heardit-backend-6f844946cd-465ms" deleted
+pod "heardit-backend-6f844946cd-h4wkm" deleted
+pod "heardit-backend-6f844946cd-tpqh4" deleted
+PS E:\k8s_testing\New folder> kubectl get pods
+No resources found in default namespace.
+PS E:\k8s_testing\New folder> kubectl get deployments
+No resources found in default namespace.
+PS E:\k8s_testing\New folder> kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   35s
+PS E:\k8s_testing\New folder> kubectl apply -f .\mysqldeploymentservice.yaml
+deployment.apps/mysql created
+service/mysql created
+PS E:\k8s_testing\New folder> kubectl apply -f .\frontenddeploymentservice.yaml
+deployment.apps/frontend created
+service/frontend created
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service created
+service/search-service created
+PS E:\k8s_testing\New folder> kubectl apply -f .\managedeploymentservice.yaml
+deployment.apps/manage-service created
+service/manage-service created
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          0/1     ContainerCreating   0          23s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          7s
+mysql-55dd7f465c-vljvx            1/1     Running             0          36s
+search-service-7fdcdfb668-dm7x2   0/1     ContainerCreating   0          14s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         0/1     1            0           38s
+manage-service   0/1     1            0           22s
+mysql            1/1     1            1           51s
+search-service   0/1     1            0           29s
+PS E:\k8s_testing\New folder> kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+frontend         ClusterIP   10.109.121.214   <none>        80/TCP     49s
+kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP    2m10s
+manage-service   ClusterIP   10.96.108.73     <none>        8082/TCP   33s
+mysql            ClusterIP   10.109.156.11    <none>        3306/TCP   62s
+search-service   ClusterIP   10.107.168.61    <none>        8081/TCP   40s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         0/1     1            0           64s
+manage-service   0/1     1            0           48s
+mysql            1/1     1            1           77s
+search-service   0/1     1            0           55s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          0/1     ContainerCreating   0          70s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          54s
+mysql-55dd7f465c-vljvx            1/1     Running             0          83s
+search-service-7fdcdfb668-dm7x2   0/1     ContainerCreating   0          61s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          0/1     ContainerCreating   0          80s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          64s
+mysql-55dd7f465c-vljvx            1/1     Running             0          93s
+search-service-7fdcdfb668-dm7x2   0/1     ContainerCreating   0          71s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          0/1     ContainerCreating   0          116s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          100s
+mysql-55dd7f465c-vljvx            1/1     Running             0          2m9s
+search-service-7fdcdfb668-dm7x2   0/1     ContainerCreating   0          107s
+PS E:\k8s_testing\New folder> kubectl logs
+error: expected 'logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]'.
+POD or TYPE/NAME is a required argument for the logs command
+See 'kubectl logs -h' for help and examples
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          1/1     Running             0          2m51s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          2m35s
+mysql-55dd7f465c-vljvx            1/1     Running             0          3m4s
+search-service-7fdcdfb668-dm7x2   0/1     Running             0          2m42s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS              RESTARTS   AGE
+frontend-6dbb5b75b-w4td2          1/1     Running             0          2m59s
+manage-service-677f765984-w7shk   0/1     ContainerCreating   0          2m43s
+mysql-55dd7f465c-vljvx            1/1     Running             0          3m12s
+search-service-7fdcdfb668-dm7x2   0/1     Error               0          2m50s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           3m6s
+manage-service   0/1     1            0           2m50s
+mysql            1/1     1            1           3m19s
+search-service   0/1     1            0           2m57s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           4m22s
+manage-service   0/1     1            0           4m6s
+mysql            1/1     1            1           4m35s
+search-service   0/1     1            0           4m13s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS             RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running            0             4m26s
+manage-service-677f765984-w7shk   0/1     CrashLoopBackOff   1 (19s ago)   4m10s
+mysql-55dd7f465c-vljvx            1/1     Running            0             4m39s
+search-service-7fdcdfb668-dm7x2   0/1     Running            2 (32s ago)   4m17s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0             4m39s
+manage-service-677f765984-w7shk   0/1     Running   2 (32s ago)   4m23s
+mysql-55dd7f465c-vljvx            1/1     Running   0             4m52s
+search-service-7fdcdfb668-dm7x2   0/1     Error     2 (45s ago)   4m30s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS             RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running            0             6m29s
+manage-service-677f765984-w7shk   0/1     Running            4 (56s ago)   6m13s
+mysql-55dd7f465c-vljvx            1/1     Running            0             6m42s
+search-service-7fdcdfb668-dm7x2   0/1     CrashLoopBackOff   4 (15s ago)   6m20s
+PS E:\k8s_testing\New folder> kubectl apply -f .\mysqldeploymentservice.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 created
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS             RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running            0             7m13s
+manage-service-677f765984-w7shk   0/1     CrashLoopBackOff   4 (42s ago)   6m57s
+mysql-55dd7f465c-vljvx            1/1     Running            0             7m26s
+search-service-7fdcdfb668-dm7x2   0/1     CrashLoopBackOff   4 (59s ago)   7m4s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           7m24s
+manage-service   0/1     1            0           7m8s
+mysql            1/1     1            1           7m37s
+search-service   0/1     1            0           7m15s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS             RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running            0             7m28s
+manage-service-677f765984-w7shk   0/1     CrashLoopBackOff   4 (57s ago)   7m12s
+mysql-55dd7f465c-vljvx            1/1     Running            0             7m41s
+search-service-7fdcdfb668-dm7x2   0/1     CrashLoopBackOff   4 (74s ago)   7m19s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS       AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0              8m7s
+manage-service-677f765984-w7shk   0/1     Running   5 (96s ago)    7m51s
+mysql-55dd7f465c-vljvx            1/1     Running   0              8m20s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (113s ago)   7m58s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS       AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0              8m14s
+manage-service-677f765984-w7shk   0/1     Running   5 (103s ago)   7m58s
+mysql-55dd7f465c-vljvx            1/1     Running   0              8m27s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m ago)     8m5s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS       AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0              8m16s
+manage-service-677f765984-w7shk   0/1     Running   5 (105s ago)   8m
+mysql-55dd7f465c-vljvx            1/1     Running   0              8m29s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m2s ago)   8m7s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS       AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0              8m20s
+manage-service-677f765984-w7shk   0/1     Running   5 (109s ago)   8m4s
+mysql-55dd7f465c-vljvx            1/1     Running   0              8m33s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m6s ago)   8m11s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS       AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0              8m23s
+manage-service-677f765984-w7shk   0/1     Running   5 (112s ago)   8m7s
+mysql-55dd7f465c-vljvx            1/1     Running   0              8m36s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m9s ago)   8m14s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               8m32s
+manage-service-677f765984-w7shk   0/1     Running   5 (2m1s ago)    8m16s
+mysql-55dd7f465c-vljvx            1/1     Running   0               8m45s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m18s ago)   8m23s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               8m35s
+manage-service-677f765984-w7shk   0/1     Running   5 (2m4s ago)    8m19s
+mysql-55dd7f465c-vljvx            1/1     Running   0               8m48s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m21s ago)   8m26s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               8m41s
+manage-service-677f765984-w7shk   0/1     Running   5 (2m10s ago)   8m25s
+mysql-55dd7f465c-vljvx            1/1     Running   0               8m54s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m27s ago)   8m32s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               8m45s
+manage-service-677f765984-w7shk   0/1     Running   5 (2m14s ago)   8m29s
+mysql-55dd7f465c-vljvx            1/1     Running   0               8m58s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m31s ago)   8m36s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               9m5s
+manage-service-677f765984-w7shk   0/1     Running   5 (2m34s ago)   8m49s
+mysql-55dd7f465c-vljvx            1/1     Running   0               9m18s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (2m51s ago)   8m56s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               9m31s
+manage-service-677f765984-w7shk   0/1     Running   5 (3m ago)      9m15s
+mysql-55dd7f465c-vljvx            1/1     Running   0               9m44s
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (3m17s ago)   9m22s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               10m
+manage-service-677f765984-w7shk   0/1     Running   5 (3m33s ago)   9m48s
+mysql-55dd7f465c-vljvx            1/1     Running   0               10m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (3m50s ago)   9m55s
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           10m
+manage-service   0/1     1            0           9m51s
+mysql            1/1     1            1           10m
+search-service   0/1     1            0           9m58s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               10m
+manage-service-677f765984-w7shk   0/1     Running   5 (3m40s ago)   9m55s
+mysql-55dd7f465c-vljvx            1/1     Running   0               10m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (3m57s ago)   10m
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               10m
+manage-service-677f765984-w7shk   0/1     Running   5 (4m18s ago)   10m
+mysql-55dd7f465c-vljvx            1/1     Running   0               11m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (4m35s ago)   10m
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               11m
+manage-service-677f765984-w7shk   0/1     Running   5 (5m4s ago)    11m
+mysql-55dd7f465c-vljvx            1/1     Running   0               11m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (5m21s ago)   11m
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           11m
+manage-service   0/1     1            0           11m
+mysql            1/1     1            1           11m
+search-service   0/1     1            0           11m
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           12m
+manage-service   0/1     1            0           12m
+mysql            1/1     1            1           12m
+search-service   0/1     1            0           12m
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           12m
+manage-service   0/1     1            0           12m
+mysql            1/1     1            1           13m
+search-service   0/1     1            0           12m
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               12m
+manage-service-677f765984-w7shk   0/1     Running   5 (6m22s ago)   12m
+manage-service-99588bb99-8527n    0/1     Running   0               15s
+mysql-55dd7f465c-vljvx            1/1     Running   0               13m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (6m39s ago)   12m
+search-service-89cf445ff-bpnmx    0/1     Running   0               10s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               13m
+manage-service-677f765984-w7shk   0/1     Running   5 (6m51s ago)   13m
+manage-service-99588bb99-8527n    0/1     Running   0               44s
+mysql-55dd7f465c-vljvx            1/1     Running   0               13m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (7m8s ago)    13m
+search-service-89cf445ff-bpnmx    0/1     Running   0               39s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS        AGE
+frontend-6dbb5b75b-w4td2          1/1     Running   0               13m
+manage-service-677f765984-w7shk   0/1     Running   5 (7m15s ago)   13m
+manage-service-99588bb99-8527n    0/1     Running   0               68s
+mysql-55dd7f465c-vljvx            1/1     Running   0               13m
+search-service-7fdcdfb668-dm7x2   0/1     Running   5 (7m32s ago)   13m
+search-service-89cf445ff-bpnmx    0/1     Running   0               63s
+PS E:\k8s_testing\New folder> kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+frontend         ClusterIP   10.109.121.214   <none>        80/TCP     16m
+kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP    18m
+manage-service   ClusterIP   10.96.108.73     <none>        8082/TCP   16m
+mysql            ClusterIP   10.109.156.11    <none>        3306/TCP   17m
+mysql-1          ClusterIP   10.99.241.104    <none>        3306/TCP   9m44s
+search-service   ClusterIP   10.107.168.61    <none>        8081/TCP   16m
+PS E:\k8s_testing\New folder> kubectl delete  services mysql
+service "mysql" deleted
+PS E:\k8s_testing\New folder> kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+frontend         ClusterIP   10.109.121.214   <none>        80/TCP     17m
+kubernetes       ClusterIP   10.96.0.1        <none>        443/TCP    18m
+manage-service   ClusterIP   10.96.108.73     <none>        8082/TCP   16m
+mysql-1          ClusterIP   10.99.241.104    <none>        3306/TCP   10m
+search-service   ClusterIP   10.107.168.61    <none>        8081/TCP   17m
+PS E:\k8s_testing\New folder> minikube service frontend
+W0509 09:20:28.483285    6604 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+|-----------|----------|-------------|--------------|
+| NAMESPACE |   NAME   | TARGET PORT |     URL      |
+|-----------|----------|-------------|--------------|
+| default   | frontend |             | No node port |
+|-----------|----------|-------------|--------------|
+* service default/frontend has no node port
+* Starting tunnel for service frontend.
+|-----------|----------|-------------|------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |          URL           |
+|-----------|----------|-------------|------------------------|
+| default   | frontend |             | http://127.0.0.1:63897 |
+|-----------|----------|-------------|------------------------|
+* Opening service default/frontend in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+* Stopping tunnel for service frontend.
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS        RESTARTS      AGE
+frontend-6dbb5b75b-w4td2          1/1     Running       0             26m
+manage-service-677f765984-w7shk   0/1     Running       5 (20m ago)   26m
+manage-service-99588bb99-8527n    0/1     Running       0             13m
+mysql-55dd7f465c-vljvx            1/1     Running       0             26m
+search-service-7fdcdfb668-dm7x2   0/1     Running       5 (20m ago)   26m
+search-service-89cf445ff-8ppbp    0/1     Running       0             19s
+search-service-89cf445ff-bpnmx    0/1     Terminating   0             13m
+PS E:\k8s_testing\New folder> kubectl delete deployments --all
+deployment.apps "frontend" deleted
+deployment.apps "manage-service" deleted
+deployment.apps "mysql" deleted
+deployment.apps "search-service" deleted
+PS E:\k8s_testing\New folder> kubectl delete services --all
+service "frontend" deleted
+service "kubernetes" deleted
+service "manage-service" deleted
+service "mysql-1" deleted
+service "search-service" deleted
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                             READY   STATUS        RESTARTS   AGE
+search-service-89cf445ff-8ppbp   0/1     Terminating   0          69s
+PS E:\k8s_testing\New folder> kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   24s
+PS E:\k8s_testing\New folder> kubectl apply -f .\mysqldeploymentservice.yaml
+deployment.apps/mysql created
+service/mysql-1 created
+PS E:\k8s_testing\New folder> kubectl apply -f .\frontenddeploymentservice.yaml
+deployment.apps/frontend created
+service/frontend created
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service created
+service/search-service created
+PS E:\k8s_testing\New folder> kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           79s
+mysql            1/1     1            1           86s
+search-service   0/1     1            0           70s
+PS E:\k8s_testing\New folder> kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+frontend-6dbb5b75b-v84lc          1/1     Running   0          86s
+mysql-55dd7f465c-kxkrt            1/1     Running   0          93s
+search-service-7fdcdfb668-jrcc4   0/1     Running   0          77s
+PS E:\k8s_testing\New folder> minikube service frontend
+W0509 09:38:52.936442    8640 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+|-----------|----------|-------------|--------------|
+| NAMESPACE |   NAME   | TARGET PORT |     URL      |
+|-----------|----------|-------------|--------------|
+| default   | frontend |             | No node port |
+|-----------|----------|-------------|--------------|
+* service default/frontend has no node port
+* Starting tunnel for service frontend.
+|-----------|----------|-------------|------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |          URL           |
+|-----------|----------|-------------|------------------------|
+| default   | frontend |             | http://127.0.0.1:64904 |
+|-----------|----------|-------------|------------------------|
+* Opening service default/frontend in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+* Stopping tunnel for service frontend.
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service unchanged
+service/search-service configured
+PS E:\k8s_testing\New folder> kubectl apply -f .\frontenddeploymentservice.yaml
+deployment.apps/frontend unchanged
+service/frontend configured
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service configured
+service/search-service unchanged
+PS E:\k8s_testing\New folder> minikube service frontend
+W0509 09:46:21.728367   13800 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+|-----------|----------|-------------|---------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |            URL            |
+|-----------|----------|-------------|---------------------------|
+| default   | frontend |        3000 | http://192.168.49.2:31216 |
+|-----------|----------|-------------|---------------------------|
+* Starting tunnel for service frontend.
+|-----------|----------|-------------|------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |          URL           |
+|-----------|----------|-------------|------------------------|
+| default   | frontend |             | http://127.0.0.1:65100 |
+|-----------|----------|-------------|------------------------|
+* Opening service default/frontend in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+* Stopping tunnel for service frontend.
+PS E:\k8s_testing\New folder> kubectl apply -f .\managedeploymentservice.yaml
+deployment.apps/manage-service created
+service/manage-service created
+PS E:\k8s_testing\New folder> kubectl get services
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         LoadBalancer   10.106.255.194   <pending>     3000:31216/TCP   22m
+kubernetes       ClusterIP      10.96.0.1        <none>        443/TCP          28m
+manage-service   LoadBalancer   10.103.13.57     <pending>     8082:30324/TCP   10m
+mysql-1          ClusterIP      10.103.167.95    <none>        3306/TCP         22m
+search-service   LoadBalancer   10.101.3.199     <pending>     8081:30652/TCP   22m
+PS E:\k8s_testing\New folder> kubectl get services
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         LoadBalancer   10.106.255.194   <pending>     3000:31216/TCP   38m
+kubernetes       ClusterIP      10.96.0.1        <none>        443/TCP          44m
+manage-service   LoadBalancer   10.103.13.57     <pending>     8082:30324/TCP   26m
+mysql-1          ClusterIP      10.103.167.95    <none>        3306/TCP         38m
+search-service   LoadBalancer   10.101.3.199     <pending>     8081:30652/TCP   38m
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service unchanged
+service/search-service unchanged
+PS E:\k8s_testing\New folder>
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service unchanged
+service/search-service unchanged
+PS E:\k8s_testing\New folder> kubectl apply -f .\frontenddeploymentservice.yaml
+deployment.apps/frontend unchanged
+service/frontend unchanged
+PS E:\k8s_testing\New folder> kubectl apply -f .\frontenddeploymentservice.yaml
+deployment.apps/frontend created
+service/frontend unchanged
+PS E:\k8s_testing\New folder> kubectl apply -f .\searchdeploymentservice.yaml
+deployment.apps/search-service created
+service/search-service unchanged
+PS E:\k8s_testing\New folder> minikube service frontend
+W0509 10:19:51.078248   16124 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+|-----------|----------|-------------|---------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |            URL            |
+|-----------|----------|-------------|---------------------------|
+| default   | frontend |        3000 | http://192.168.49.2:31216 |
+|-----------|----------|-------------|---------------------------|
+* Starting tunnel for service frontend.
+|-----------|----------|-------------|------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |          URL           |
+|-----------|----------|-------------|------------------------|
+| default   | frontend |             | http://127.0.0.1:50281 |
+|-----------|----------|-------------|------------------------|
+* Opening service default/frontend in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+* Stopping tunnel for service frontend.
+PS E:\k8s_testing\New folder> minikube stop
+W0509 10:21:12.917859   17844 main.go:291] Unable to resolve the current Docker CLI context "default": context "default": context not found: open C:\Users\Misho\.docker\contexts\meta\37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f\meta.json: The system cannot find the path specified.
+* Stopping node "minikube"  ...
+* Powering off "minikube" via SSH ...
+* 1 node stopped.
+PS E:\k8s_testing\New folder>
+
+Welcome to the Google Cloud CLI! Run "gcloud -h" to get the list of available commands.
+---
+
+E:\k8s_testing\GoogleCloudSDK>gcloud -h
+Usage: gcloud [optional flags] <group | command>
+  group may be           access-approval | access-context-manager |
+                         active-directory | ai | ai-platform | alloydb |
+                         anthos | api-gateway | apigee | app | apphub |
+                         artifacts | asset | assured | auth | backup-dr |
+                         batch | bigtable | billing | bms | builds |
+                         certificate-manager | cloud-shell | components |
+                         composer | compute | config | container |
+                         data-catalog | database-migration | dataflow |
+                         dataplex | dataproc | datastore | datastream | deploy |
+                         deployment-manager | dns | domains | edge-cache |
+                         edge-cloud | emulators | endpoints |
+                         essential-contacts | eventarc | filestore | firebase |
+                         firestore | functions | healthcare | iam | iap |
+                         identity | ids | immersive-stream | infra-manager |
+                         kms | logging | looker | memcache | metastore | ml |
+                         ml-engine | monitoring | netapp |
+                         network-connectivity | network-management |
+                         network-security | network-services | notebooks |
+                         org-policies | organizations | policy-intelligence |
+                         policy-troubleshoot | privateca | projects | publicca |
+                         pubsub | recaptcha | recommender | redis |
+                         resource-manager | resource-settings | run | scc |
+                         scheduler | secrets | service-directory |
+                         service-extensions | services | source | spanner |
+                         sql | storage | tasks | telco-automation | topic |
+                         transcoder | transfer | vmware | workbench |
+                         workflows | workspace-add-ons | workstations
+  command may be         cheat-sheet | docker | feedback | help | info | init |
+                         survey | version
+
+For detailed information on this command and its flags, run:
+  gcloud --help
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-k8s-cluster
+Fetching cluster endpoint and auth data.
+ERROR: (gcloud.container.clusters.get-credentials) ResponseError: code=404, message=Not found: projects/heardit-k8s/zones/europe-west4-c/clusters/heardit-k8s-cluster.
+Could not find [heardit-k8s-cluster] in [europe-west4-c].
+Did you mean [heardit-k8s-cluster] in [europe-west4]?
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/region europe-west4
+WARNING: Property validation for compute/region was skipped.
+Updated property [compute/region].
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-k8s-cluster
+Fetching cluster endpoint and auth data.
+ERROR: (gcloud.container.clusters.get-credentials) ResponseError: code=404, message=Not found: projects/heardit-k8s/zones/europe-west4-c/clusters/heardit-k8s-cluster.
+Could not find [heardit-k8s-cluster] in [europe-west4-c].
+Did you mean [heardit-k8s-cluster] in [europe-west4]?
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/zone europe-west4-c
+WARNING: Property validation for compute/zone was skipped.
+Updated property [compute/zone].
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-k8s-cluster
+Fetching cluster endpoint and auth data.
+ERROR: (gcloud.container.clusters.get-credentials) ResponseError: code=404, message=Not found: projects/heardit-k8s/zones/europe-west4-c/clusters/heardit-k8s-cluster.
+Could not find [heardit-k8s-cluster] in [europe-west4-c].
+Did you mean [heardit-k8s-cluster] in [europe-west4]?
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-cluster-1
+Fetching cluster endpoint and auth data.
+ERROR: (gcloud.container.clusters.get-credentials) ResponseError: code=404, message=Not found: projects/heardit-k8s/zones/europe-west4-c/clusters/heardit-cluster-1.
+Could not find [heardit-cluster-1] in [europe-west4-c].
+Did you mean [heardit-cluster-1] in [europe-west3]?
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/region europe-west3
+WARNING: Property validation for compute/region was skipped.
+Updated property [compute/region].
+
+E:\k8s_testing\GoogleCloudSDK>gcloud config set compute/zone europe-west3
+WARNING: europe-west3 is not a valid zone. Run `gcloud compute zones list` to get all zones.
+Are you sure you wish to set property [compute/zone] to europe-west3?
+
+Do you want to continue (Y/n)?  y
+
+Updated property [compute/zone].
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters get-credentials heardit-cluster-1
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for heardit-cluster-1.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql created
+service/mysql-1 created
+deployment.apps/frontend created
+service/frontend created
+deployment.apps/search-service created
+service/search-service created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+frontend-6f98b99b-b7kb7          0/1     Pending   0          11s
+mysql-7769df8669-ld6vs           0/1     Pending   0          12s
+search-service-ccdb45cdc-vm29k   0/1     Pending   0          11s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+frontend-6f98b99b-b7kb7          0/1     Pending   0          63s
+mysql-7769df8669-ld6vs           0/1     Pending   0          64s
+search-service-ccdb45cdc-vm29k   0/1     Pending   0          63s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         0/1     1            0           71s
+mysql            0/1     1            0           71s
+search-service   0/1     1            0           70s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         0/1     1            0           2m54s
+mysql            0/1     1            0           2m54s
+search-service   0/1     1            0           2m53s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS              RESTARTS   AGE
+frontend-6f98b99b-b7kb7          0/1     ContainerCreating   0          2m55s
+mysql-7769df8669-ld6vs           0/1     ContainerCreating   0          2m56s
+search-service-ccdb45cdc-vm29k   0/1     ContainerCreating   0          2m55s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+frontend-6f98b99b-b7kb7          1/1     Running   0          5m
+mysql-7769df8669-ld6vs           1/1     Running   0          5m1s
+search-service-ccdb45cdc-vm29k   1/1     Running   0          5m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           5m9s
+mysql            1/1     1            1           5m9s
+search-service   1/1     1            1           5m8s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         NodePort    34.118.229.194   <none>        3000:32024/TCP   5m16s
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP          21m
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP         5m17s
+search-service   NodePort    34.118.234.133   <none>        8081:30153/TCP   5m16s
+
+E:\k8s_testing\GoogleCloudSDK>gcloud container clusters describe heardit-cluster-1 --region europe-west3
+addonsConfig:
+  dnsCacheConfig:
+    enabled: true
+  gcePersistentDiskCsiDriverConfig:
+    enabled: true
+  gcpFilestoreCsiDriverConfig:
+    enabled: true
+  gcsFuseCsiDriverConfig:
+    enabled: true
+  horizontalPodAutoscaling: {}
+  httpLoadBalancing: {}
+  kubernetesDashboard:
+    disabled: true
+  networkPolicyConfig:
+    disabled: true
+  statefulHaConfig:
+    enabled: true
+authenticatorGroupsConfig: {}
+autopilot:
+  enabled: true
+autoscaling:
+  autoprovisioningNodePoolDefaults:
+    imageType: COS_CONTAINERD
+    management:
+      autoRepair: true
+      autoUpgrade: true
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    serviceAccount: default
+    upgradeSettings:
+      maxSurge: 1
+      strategy: SURGE
+  autoscalingProfile: OPTIMIZE_UTILIZATION
+  enableNodeAutoprovisioning: true
+  resourceLimits:
+  - maximum: '1000000000'
+    resourceType: cpu
+  - maximum: '1000000000'
+    resourceType: memory
+  - maximum: '1000000000'
+    resourceType: nvidia-tesla-t4
+  - maximum: '1000000000'
+    resourceType: nvidia-tesla-a100
+binaryAuthorization:
+  evaluationMode: DISABLED
+clusterIpv4Cidr: 10.46.128.0/17
+createTime: '2024-05-09T09:55:22+00:00'
+currentMasterVersion: 1.28.7-gke.1026000
+currentNodeCount: 2
+currentNodeVersion: 1.28.7-gke.1026000
+databaseEncryption:
+  state: DECRYPTED
+defaultMaxPodsConstraint:
+  maxPodsPerNode: '110'
+endpoint: 35.234.110.92
+enterpriseConfig:
+  clusterTier: STANDARD
+etag: 581bb874-c623-42c7-83b1-184840436f84
+id: ee2e590e0bb54df1b7b0ff90b7dd495f585a68c4dc0b472f8efc19f763d591ac
+initialClusterVersion: 1.28.7-gke.1026000
+instanceGroupUrls:
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-default-pool-56cdeace-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-823444be-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-96854d7b-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-29007ef5-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-331b6fa7-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-a733c3ac-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-92541b13-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-9594d142-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-ef580376-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-15de334d-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-6b87177f-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-d8f675f2-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-24bc3db3-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-9eebf3ac-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-7abebf51-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-3662b250-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-82084600-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-590ff646-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-7067ecb7-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-a17da28b-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-grp
+- https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-grp
+ipAllocationPolicy:
+  clusterIpv4Cidr: 10.46.128.0/17
+  clusterIpv4CidrBlock: 10.46.128.0/17
+  clusterSecondaryRangeName: gke-heardit-cluster-1-pods-ee2e590e
+  defaultPodIpv4RangeUtilization: 0.0039
+  podCidrOverprovisionConfig: {}
+  servicesIpv4Cidr: 34.118.224.0/20
+  servicesIpv4CidrBlock: 34.118.224.0/20
+  stackType: IPV4
+  useIpAliases: true
+labelFingerprint: a9dc16a7
+legacyAbac: {}
+location: europe-west3
+locations:
+- europe-west3-a
+- europe-west3-b
+- europe-west3-c
+loggingConfig:
+  componentConfig:
+    enableComponents:
+    - SYSTEM_COMPONENTS
+    - WORKLOADS
+loggingService: logging.googleapis.com/kubernetes
+maintenancePolicy:
+  resourceVersion: e3b0c442
+masterAuth:
+  clusterCaCertificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMRENDQXBTZ0F3SUJBZ0lRZEJIL2VKZmYzdFZVUTVxN0xQRlZDakFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlSbU1qRTVNbVpoWmkwMFpqSmpMVFF6WXpBdE9XUXpNUzB5TW1Wak9EUTBPR1JpT1RjdwpJQmNOTWpRd05UQTVNRGcxTlRJeldoZ1BNakExTkRBMU1ESXdPVFUxTWpOYU1DOHhMVEFyQmdOVkJBTVRKR1l5Ck1Ua3labUZtTFRSbU1tTXRORE5qTUMwNVpETXhMVEl5WldNNE5EUTRaR0k1TnpDQ0FhSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0dQQURDQ0FZb0NnZ0dCQU44VWdpbVRsS3YwVktVRkFIVGxlY3hjTlByU0wxOW1haVBla3podAp4UFo4dk8zeDVwS2l2U1ViRDFXK21PUC9odGYrYjM0WnorSGNCeFpTb2xqNE41TDZPWDlWZ3VQZ0svYTFzdEw2CkZxMmY4ZUg2eitFbGFOKytzSmV5VTZlNzhGejBGWGxBb3c3OGIyYTBicENsRS9RWWQ4VW5TclJCN3RXeDluazgKa0hyZ0R3MzhMY3lhMEQ3cXUvTjVGSFRoeFhabUNFSlJpV2dFTUZNVlIvMW1UenQ1dmNXemlaVExaYVNjTDUyUgp3Nkd4WU9kVStsL2MwRGJRZ0Z5UWR1cTZDREtMcnJlOVZ1MGV3NVIyU0p4QUZlNWhTSU1pU3IrSStrNks3WWRCCnI1dzhldjZ1SFVEZ0Z0RTVQT1dNOHU5MGxPK0ZSSDBTSER2VWhLNllxQXJoTFh6enhXdW13NmV0ZGF0YnhyTkYKMGpVNWpwanNRbGZqSTZYYUhGazNId2FwUlNDMjFDek01QXhRcE53UnF5RU5SbFNncG1IalMvQ3RTc0V5aFlaeQppRmVoNHpCc0szVWd5VlA4R0wyN2pScmtoVDVzQTNqRWpiWnk5MzNHYnNuK3o3eFRkcmltblBZelUreHNZaWtkCmtmLzM0Y1UyOUdhZ204N1M2cHl2MUxTbkJ3SURBUUFCbzBJd1FEQU9CZ05WSFE4QkFmOEVCQU1DQWdRd0R3WUQKVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVU0akU2OVJyM05FQjNQaHRjMGJpMjFWa1k0QXN3RFFZSgpLb1pJaHZjTkFRRUxCUUFEZ2dHQkFKbUExbnJJSlNRMThKTWQvS2xiY1pZeFhVbU91UTdtcjdXWTNLSUp5QzI3CmlQZ3htZWhyRVlSbEFBYU5jVCsyQUlndlR5YmphaEFrdWxnRERBZFJPb29IT1hHZnZLcnYybFJsalhua1FqUVQKeXdoZWVIZkxwd29rYXY1aDB6bDJtTkFZaGpINHliWDM4M1N2aElWLzJRTjhNcXRuNDE1a1dJV1d0ZklCZ3J6eApxanhXYWErM3g2UWFKTTh1enRNZzF0Rlg2dFB4UFdFQTFQUHZCRDB1Zlc1SzQ0S2JGeElnNm1xdkdGNnpPUTRnCkxUWDNwdUZWQkRuZUpXbkRQK3JyY3ZBNytqeXMwM3hGMVFyNnJ2djZpK3RDcnRpVmk4cG5vTldLS3NDS2QvQWsKUjVjbHhsOHdjbXpFcjFiSGczdFhRMFVQVENQUU1UM0xnTGdZU2tkOXFaMS9TVmhBZzJhMkNFNldYbzhBYTlaTQpjV0lMdTNYZjR4Y3dSWEtOM1hXSEJjUzlnRGFZdXp2Qmh1R1BlZ3BKOGdiczhWYWhKYXBoVFhyU1k3akNGOVRmCi9Najl0YVY0VGQwOXRQUXUycnpJT3N6U3pDKzhBa0thV1hyYy9uZUhVT2RMenovcThvNG1adVg2TWpPR0RTbjgKakVQenNPWlg3NW9EdFdPZ3FyT1VIZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+masterAuthorizedNetworksConfig:
+  gcpPublicCidrsAccessEnabled: true
+monitoringConfig:
+  advancedDatapathObservabilityConfig:
+    enableMetrics: true
+  componentConfig:
+    enableComponents:
+    - SYSTEM_COMPONENTS
+    - STORAGE
+    - POD
+    - DEPLOYMENT
+    - STATEFULSET
+    - DAEMONSET
+    - HPA
+  managedPrometheusConfig:
+    enabled: true
+monitoringService: monitoring.googleapis.com/kubernetes
+name: heardit-cluster-1
+network: default
+networkConfig:
+  datapathProvider: ADVANCED_DATAPATH
+  defaultSnatStatus: {}
+  dnsConfig:
+    clusterDns: CLOUD_DNS
+    clusterDnsDomain: cluster.local
+    clusterDnsScope: CLUSTER_SCOPE
+  enableIntraNodeVisibility: true
+  gatewayApiConfig:
+    channel: CHANNEL_STANDARD
+  network: projects/heardit-k8s/global/networks/default
+  serviceExternalIpsConfig: {}
+  subnetwork: projects/heardit-k8s/regions/europe-west3/subnetworks/default
+nodeConfig:
+  diskSizeGb: 100
+  diskType: pd-balanced
+  imageType: COS_CONTAINERD
+  machineType: e2-small
+  metadata:
+    disable-legacy-endpoints: 'true'
+  oauthScopes:
+  - https://www.googleapis.com/auth/devstorage.read_only
+  - https://www.googleapis.com/auth/logging.write
+  - https://www.googleapis.com/auth/monitoring
+  - https://www.googleapis.com/auth/service.management.readonly
+  - https://www.googleapis.com/auth/servicecontrol
+  - https://www.googleapis.com/auth/trace.append
+  reservationAffinity:
+    consumeReservationType: NO_RESERVATION
+  serviceAccount: default
+  shieldedInstanceConfig:
+    enableIntegrityMonitoring: true
+    enableSecureBoot: true
+  taints:
+  - effect: NO_SCHEDULE
+    key: cloud.google.com/gke-quick-remove
+    value: 'true'
+  windowsNodeConfig: {}
+  workloadMetadataConfig:
+    mode: GKE_METADATA
+nodePoolDefaults:
+  nodeConfigDefaults:
+    gcfsConfig:
+      enabled: true
+    loggingConfig:
+      variantConfig:
+        variant: DEFAULT
+nodePools:
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-small
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    taints:
+    - effect: NO_SCHEDULE
+      key: cloud.google.com/gke-quick-remove
+      value: 'true'
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: f76b6958-9f1c-4afd-8eeb-5236776cbe60
+  initialNodeCount: 1
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-default-pool-56cdeace-grp
+  locations:
+  - europe-west3-a
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: default-pool
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/default-pool
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-medium
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: f9df4546-8f45-49d7-bd52-a9043cd3c1b3
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-823444be-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-96854d7b-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-1-29007ef5-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-1
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-1
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-2
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: a2245c43-bae7-452e-9fbf-d8210b24843f
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-331b6fa7-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-a733c3ac-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-2-92541b13-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-2
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-2
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-4
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: fa1011f6-c853-450f-9f38-8bf0a9f586e2
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-9594d142-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-ef580376-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-3-15de334d-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-3
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-3
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-8
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: b82f01ea-36fa-4a4a-961d-7dcdff9967c7
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-6b87177f-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-d8f675f2-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-4-24bc3db3-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-4
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-4
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-16
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: 1188db1c-57d8-4a7e-8150-5d3715e07d3d
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-9eebf3ac-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-7abebf51-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-5-3662b250-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-5
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-5
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 100
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-32
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: d7a14153-9281-4ac9-af1f-bdf43dfe399e
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-82084600-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-590ff646-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-pool-6-7067ecb7-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: pool-6
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/pool-6
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+- autoscaling:
+    autoprovisioned: true
+    enabled: true
+    locationPolicy: BALANCED
+    maxNodeCount: 1000
+  config:
+    diskSizeGb: 250
+    diskType: pd-balanced
+    imageType: COS_CONTAINERD
+    machineType: e2-standard-2
+    metadata:
+      disable-legacy-endpoints: 'true'
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    reservationAffinity:
+      consumeReservationType: NO_RESERVATION
+    serviceAccount: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+      enableSecureBoot: true
+    windowsNodeConfig: {}
+    workloadMetadataConfig:
+      mode: GKE_METADATA
+  etag: b514e881-054c-4ded-9f23-b15bfd6d3b00
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-a/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-a17da28b-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-b/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-0ccab8c9-grp
+  - https://www.googleapis.com/compute/v1/projects/heardit-k8s/zones/europe-west3-c/instanceGroupManagers/gk3-heardit-cluster-1-nap-6vix9ug9-43eb0988-grp
+  locations:
+  - europe-west3-a
+  - europe-west3-b
+  - europe-west3-c
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsConstraint:
+    maxPodsPerNode: '32'
+  name: nap-6vix9ug9
+  networkConfig:
+    enablePrivateNodes: false
+    podIpv4CidrBlock: 10.46.128.0/17
+    podIpv4RangeUtilization: 0.0039
+    podRange: gke-heardit-cluster-1-pods-ee2e590e
+  placementPolicy: {}
+  podIpv4CidrSize: 26
+  selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1/nodePools/nap-6vix9ug9
+  status: RUNNING
+  upgradeSettings:
+    maxSurge: 1
+    strategy: SURGE
+  version: 1.28.7-gke.1026000
+notificationConfig:
+  pubsub: {}
+privateClusterConfig:
+  privateEndpoint: 10.156.0.2
+  publicEndpoint: 35.234.110.92
+releaseChannel:
+  channel: REGULAR
+securityPostureConfig:
+  mode: BASIC
+  vulnerabilityMode: VULNERABILITY_BASIC
+selfLink: https://container.googleapis.com/v1/projects/heardit-k8s/locations/europe-west3/clusters/heardit-cluster-1
+servicesIpv4Cidr: 34.118.224.0/20
+shieldedNodes:
+  enabled: true
+status: RUNNING
+subnetwork: default
+verticalPodAutoscaling:
+  enabled: true
+workloadIdentityConfig:
+  workloadPool: heardit-k8s.svc.id.goog
+zone: europe-west3
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+Warning: annotation "kubernetes.io/ingress.class" is deprecated, please use 'spec.ingressClassName' instead
+ingress.networking.k8s.io/frontend-ingress created
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+frontend-6f98b99b-b7kb7          1/1     Running   0          19m
+mysql-7769df8669-ld6vs           1/1     Running   0          19m
+search-service-ccdb45cdc-vm29k   1/1     Running   0          19m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      30s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend configured
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      2m15s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         LoadBalancer   34.118.229.194   <pending>     3000:32024/TCP   21m
+kubernetes       ClusterIP      34.118.224.1     <none>        443/TCP          37m
+mysql-1          ClusterIP      34.118.225.129   <none>        3306/TCP         21m
+search-service   NodePort       34.118.234.133   <none>        8081:30153/TCP   21m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         LoadBalancer   34.118.229.194   <pending>     3000:32024/TCP   21m
+kubernetes       ClusterIP      34.118.224.1     <none>        443/TCP          37m
+mysql-1          ClusterIP      34.118.225.129   <none>        3306/TCP         21m
+search-service   NodePort       34.118.234.133   <none>        8081:30153/TCP   21m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+frontend         LoadBalancer   34.118.229.194   34.159.151.190   3000:32024/TCP   22m
+kubernetes       ClusterIP      34.118.224.1     <none>           443/TCP          38m
+mysql-1          ClusterIP      34.118.225.129   <none>           3306/TCP         22m
+search-service   NodePort       34.118.234.133   <none>           8081:30153/TCP   22m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      3m6s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      3m48s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      3m56s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+frontend         LoadBalancer   34.118.229.194   34.159.151.190   3000:32024/TCP   23m
+kubernetes       ClusterIP      34.118.224.1     <none>           443/TCP          39m
+mysql-1          ClusterIP      34.118.225.129   <none>           3306/TCP         23m
+search-service   NodePort       34.118.234.133   <none>           8081:30153/TCP   23m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS   PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local             80      4m16s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS        PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local   34.49.64.160   80      8m4s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS        PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local   34.49.64.160   80      17m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS        PORTS   AGE
+frontend-ingress   <none>   frontend-service.default.svc.cluster.local   34.49.64.160   80      50m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+frontend         LoadBalancer   34.118.229.194   34.159.151.190   3000:32024/TCP   71m
+kubernetes       ClusterIP      34.118.224.1     <none>           443/TCP          87m
+mysql-1          ClusterIP      34.118.225.129   <none>           3306/TCP         71m
+search-service   NodePort       34.118.234.133   <none>           8081:30153/TCP   71m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                        ADDRESS        PORTS   AGE
+frontend-ingress   <none>   konbonbon.endpoints.heardit-k8s.cloud.goog   34.49.64.160   80      71m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+The Ingress "frontend-ingress" is invalid: spec.rules[0].host: Invalid value: "<YOUR_RANDOM_DOMAIN>.endpoints.YOUR_PROJECT_ID.cloud.goog": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+The Ingress "frontend-ingress" is invalid: spec.rules[0].host: Invalid value: "34.159.151.190": must be a DNS name, not an IP address
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS                                ADDRESS        PORTS   AGE
+frontend-ingress   <none>   frontend.default.svc.cluster.local   34.49.64.160   80      76m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+The request is invalid: patch: Invalid value: "map[metadata:map[annotations:map[kubectl.kubernetes.io/last-applied-configuration:{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"Ingress\",\"metadata\":{\"annotations\":{\"kubernetes.io/ingress.class\":\"gce\"},\"name\":\"frontend-ingress\",\"namespace\":\"default\"},\"spec\":{\"rules\":{\"http\":{\"paths\":[{\"backend\":{\"service\":{\"name\":\"frontend\",\"port\":{\"number\":3000}}},\"path\":\"/*\",\"pathType\":\"ImplementationSpecific\"}]}}}}\n kubernetes.io/ingress.class:gce]] spec:map[rules:map[http:map[paths:[map[backend:map[service:map[name:frontend port:map[number:3000]]] path:/* pathType:ImplementationSpecific]]]]]]": cannot restore slice from map
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      83m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend configured
+ingress.networking.k8s.io/frontend-ingress unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         NodePort    34.118.229.194   <none>        3000:32024/TCP   105m
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP          121m
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP         105m
+search-service   NodePort    34.118.234.133   <none>        8081:30153/TCP   105m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      106m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      108m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS              ADDRESS        PORTS   AGE
+frontend-ingress   <none>   heardit-sem6-app   34.49.64.160   80      113m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      121m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend unchanged
+service/frontend unchanged
+ingress.networking.k8s.io/frontend-ingress configured
+deployment.apps/search-service unchanged
+service/search-service unchanged
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      122m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+frontend         NodePort    34.118.229.194   <none>        3000:32024/TCP   141m
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP          157m
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP         141m
+search-service   NodePort    34.118.234.133   <none>        8081:30153/TCP   141m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+NAME               CLASS    HOSTS   ADDRESS        PORTS   AGE
+frontend-ingress   <none>   *       34.49.64.160   80      122m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete service frontend
+service "frontend" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete deployment frontend
+deployment.apps "frontend" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubetcl delete ingress frontend-ingress
+'kubetcl' is not recognized as an internal or external command,
+operable program or batch file.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete ingress frontend-ingress
+ingress.networking.k8s.io "frontend-ingress" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes       ClusterIP   34.118.224.1     <none>        443/TCP          165m
+mysql-1          ClusterIP   34.118.225.129   <none>        3306/TCP         150m
+search-service   NodePort    34.118.234.133   <none>        8081:30153/TCP   150m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           150m
+search-service   1/1     1            1           150m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          150m
+search-service-ccdb45cdc-vm29k   1/1     Running   0          150m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/frontend created
+deployment.apps/search-service unchanged
+service/search-service configured
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+frontend         1/1     1            1           48s
+mysql            1/1     1            1           151m
+search-service   1/1     1            1           151m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete deployment frontend
+deployment.apps "frontend" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           151m
+search-service   1/1     1            1           151m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get ingress
+No resources found in default namespace.
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)          AGE
+kubernetes       ClusterIP      34.118.224.1     <none>           443/TCP          167m
+mysql-1          ClusterIP      34.118.225.129   <none>           3306/TCP         152m
+search-service   LoadBalancer   34.118.234.133   34.159.151.190   8081:30153/TCP   152m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete deployment search-service
+deployment.apps "search-service" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubectl delete service search-service
+service "search-service" deleted
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   34.118.224.1     <none>        443/TCP    3h2m
+mysql-1      ClusterIP   34.118.225.129   <none>        3306/TCP   166m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+mysql   1/1     1            1           166m
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service created
+service/search-service created
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS              RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running             0          166m
+search-service-ccdb45cdc-8nk7j   0/1     ContainerCreating   0          7s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+mysql-7769df8669-ld6vs           1/1     Running   0          166m
+search-service-ccdb45cdc-8nk7j   1/1     Running   0          34s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+mysql            1/1     1            1           166m
+search-service   1/1     1            1           37s
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get services
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)          AGE
+kubernetes       ClusterIP      34.118.224.1     <none>          443/TCP          3h2m
+mysql-1          ClusterIP      34.118.225.129   <none>          3306/TCP         167m
+search-service   LoadBalancer   34.118.235.118   34.89.218.176   8081:30195/TCP   41s
+
+
+E:\k8s_testing\GoogleCloudSDK>kubectl get crds -o=custom-columns=NAME:.metadata.name,NAMESPACE:.metadata.namespace
+NAME                                               NAMESPACE
+allowlistedv2workloads.auto.gke.io                 <none>
+allowlistedworkloads.auto.gke.io                   <none>
+audits.warden.gke.io                               <none>
+backendconfigs.cloud.google.com                    <none>
+capacityrequests.internal.autoscaling.gke.io       <none>
+ciliumendpoints.cilium.io                          <none>
+ciliumendpointslices.cilium.io                     <none>
+ciliumexternalworkloads.cilium.io                  <none>
+ciliumidentities.cilium.io                         <none>
+ciliumlocalredirectpolicies.cilium.io              <none>
+ciliumnodes.cilium.io                              <none>
+clusterpodmonitorings.monitoring.googleapis.com    <none>
+clusterrules.monitoring.googleapis.com             <none>
+egressnatpolicies.networking.gke.io                <none>
+extractionresults.vulnerabilities.protect.gke.io   <none>
+frontendconfigs.networking.gke.io                  <none>
+gatewayclasses.gateway.networking.k8s.io           <none>
+gateways.gateway.networking.k8s.io                 <none>
+gcpbackendpolicies.networking.gke.io               <none>
+gcpgatewaypolicies.networking.gke.io               <none>
+gkenetworkparamsets.networking.gke.io              <none>
+globalrules.monitoring.googleapis.com              <none>
+healthcheckpolicies.networking.gke.io              <none>
+highavailabilityapplications.ha.gke.io             <none>
+httproutes.gateway.networking.k8s.io               <none>
+lbpolicies.networking.gke.io                       <none>
+managedcertificates.networking.gke.io              <none>
+memberships.hub.gke.io                             <none>
+multidimpodautoscalers.autoscaling.gke.io          <none>
+networkloggings.networking.gke.io                  <none>
+networks.networking.gke.io                         <none>
+operatorconfigs.monitoring.googleapis.com          <none>
+podmonitorings.monitoring.googleapis.com           <none>
+redirectservices.networking.gke.io                 <none>
+referencegrants.gateway.networking.k8s.io          <none>
+rules.monitoring.googleapis.com                    <none>
+serviceattachments.networking.gke.io               <none>
+servicenetworkendpointgroups.networking.gke.io     <none>
+updateinfos.nodemanagement.gke.io                  <none>
+verticalpodautoscalers.autoscaling.k8s.io          <none>
+volumesnapshotclasses.snapshot.storage.k8s.io      <none>
+volumesnapshotcontents.snapshot.storage.k8s.io     <none>
+volumesnapshots.snapshot.storage.k8s.io            <none>
+
+E:\k8s_testing\GoogleCloudSDK>
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+resource mapping not found for name: "gateway" namespace: "" from "hearditgke.yaml": no matches for kind "GatewayClass" in version "gateways.gateway.networking.k8s.io"
+ensure CRDs are installed first
+resource mapping not found for name: "gateway" namespace: "" from "hearditgke.yaml": no matches for kind "Gateway" in version "gateways.gateway.networking.k8s.io"
+ensure CRDs are installed first
+resource mapping not found for name: "search-service" namespace: "" from "hearditgke.yaml": no matches for kind "HTTPRoute" in version "gateways.gateway.networking.k8s.io"
+ensure CRDs are installed first
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+resource mapping not found for name: "eg" namespace: "" from "hearditgke.yaml": no matches for kind "GatewayClass" in version "gateway.networking.k8s.io"
+ensure CRDs are installed first
+resource mapping not found for name: "eg" namespace: "" from "hearditgke.yaml": no matches for kind "Gateway" in version "gateway.networking.k8s.io"
+ensure CRDs are installed first
+resource mapping not found for name: "search-service" namespace: "" from "hearditgke.yaml": no matches for kind "HTTPRoute" in version "gateway.networking.k8s.io"
+ensure CRDs are installed first
+
+E:\k8s_testing\GoogleCloudSDK>kubectl apply -f hearditgke.yaml
+deployment.apps/mysql unchanged
+service/mysql-1 unchanged
+deployment.apps/search-service unchanged
+service/search-service unchanged
+resource mapping not found for name: "eg" namespace: "" from "hearditgke.yaml": no matches for kind "GatewayClass" in version "gateway.networking.k8s.io/v1"
+ensure CRDs are installed first
+resource mapping not found for name: "eg" namespace: "" from "hearditgke.yaml": no matches for kind "Gateway" in version "gateway.networking.k8s.io/v1"
+ensure CRDs are installed first
+resource mapping not found for name: "search-service" namespace: "" from "hearditgke.yaml": no matches for kind "HTTPRoute" in version "gateway.networking.k8s.io/v1"
+ensure CRDs are installed first
