@@ -13,6 +13,8 @@ env:
     # Use docker.io for Docker Hub if empty
     REGISTRY: ghcr.io
     IMAGE_NAME: jumorto/hearditbackend-image:latest
+    GCP_ZONE: europe-west4
+    CLUSTER_NAME: heardit-cluster-production
 
 jobs:
     build_and_test_search_service:
@@ -105,24 +107,33 @@ jobs:
                   docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
                   docker push jumorto/heardit-songmanager-service
 
-    # deploy:
-    #     runs-on: ubuntu-latest
-    #     defaults:
-    #         run:
-    #             working-directory: heardit_stream_service
-    #     needs: publish-docker-Hub
+  deploy-to-gke:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: deploymentFiles
+        needs: [publish-docker-Hub-search-service, publish-docker-Hub-songmanager-service]
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
-    #     steps:
-    #         - name: Checkout Repository
-    #           uses: actions/checkout@v4
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-    #         - name: Set up Google Cloud SDK
-    #           uses: google-github-actions/setup-gcloud@v0.3.0
-    #           with:
-    #               version: "latest"
-    #               project_id: ${{ secrets.GCP_PROJECT_ID }}
-    #               service_account_key: ${{ secrets.GCP_SA_KEY }}
+            - name: Set up Google Cloud SDK
+              uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0.3.0
+              with:
+                  project_id: ${{ env.GCP_PROJECT_ID }}
+                  service_account_key: ${{ secrets.GCP_SA_KEY }}
+                  export_default_credentials: true
 
-    #         - name: Deploy to Cloud Run
-    #           run: |
-    #               gcloud run deploy heardit-backend --image=jumorto/heardit-backend:latest --platform=managed --region=europe-west4
+            - name: Configure kubectl
+              uses: azure/k8s-set-context@v1
+              with:
+                  method: gke
+                  credentials: ${{ secrets.GCP_SA_KEY }}
+                  cluster_name: ${{ env.CLUSTER_NAME }}
+                  location: ${{ env.GCP_ZONE }}
+
+            - name: Apply Kubernetes configuration
+              run: |
+                  kubectl apply -f hearditgke.yaml
