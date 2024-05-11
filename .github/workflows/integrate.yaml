@@ -1,6 +1,5 @@
 # Automatically build and test HeardIT back-end on push and pull-request
 # using GitHub Actions.
-
 name: HeardIT pipeline
 
 on:
