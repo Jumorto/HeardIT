@@ -139,3 +139,4 @@ jobs:
             - name: Apply Kubernetes configuration
               run: |
                   kubectl apply -f hearditgke.yaml
+                  kubectl rollout restart deployment

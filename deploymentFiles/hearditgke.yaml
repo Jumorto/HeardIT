@@ -15,6 +15,7 @@ spec:
             containers:
                 - name: mysql
                   image: jumorto/mysql-heardittracks:latest
+                  imagePullPolicy: Always
                   env:
                       - name: MYSQL_ROOT_PASSWORD
                         value: "H@punCel9"
@@ -54,6 +55,7 @@ spec:
             containers:
                 - name: search-service
                   image: jumorto/heardit-search-service:latest
+                  imagePullPolicy: Always
                   ports:
                       - containerPort: 8081
 
