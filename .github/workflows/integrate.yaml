@@ -79,34 +79,18 @@ jobs:
               env:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_NETLAB_PRIVATE }}
               run: |
-                  # Create the SSH directory
                   mkdir -p ~/.ssh
-
-                  # Output the current directory for debugging
-                  pwd
-
-                  # Check the contents of the .ssh directory
-                  ls -la ~/.ssh
-
-                  # Write the SSH private key to a file
                   echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
-
-                  # Change the permissions of the private key file
                   chmod 600 ~/.ssh/id_rsa
-
-                  # Add the remote host to known hosts to avoid confirmation prompt
                   ssh-keyscan -H 192.168.144.136 >> ~/.ssh/known_hosts
-
-                  # Check the contents of the .ssh directory again
-                  ls -la ~/.ssh
-
-                  # Display the first few lines of the private key for verification (Optional)
-                  head -n 5 ~/.ssh/id_rsa
+                  cat ~/.ssh/id_rsa | head -n 5
+                  ls -l ~/.ssh
+                  cat ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
                   ssh -o StrictHostKeyChecking=no student@192.168.144.136 << EOF
-                    cd ~/Desktop,'\;lpoasfedm,l;/'
+                    cd ~/Desktop
                     k6 run loadTest1.js
                   EOF
 
