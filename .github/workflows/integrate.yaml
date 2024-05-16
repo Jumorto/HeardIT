@@ -72,25 +72,10 @@ jobs:
               run: |
                   sudo apt-get update
                   sudo /sbin/modprobe tun
-                  sudo apt-get install -y openconnect expect
+                  sudo apt-get install -y openconnect
 
-                  # Create a script to automate VPN login
-                  cat <<EOF > vpn_login.sh
-                  spawn sudo openconnect vpnnetlab.fhict.nl -b
-                  expect "GROUP:"
-                  send "Netlab Fontys ICT\r"
-                  expect "Username:"
-                  send "${{ secrets.VPN_USERNAME }}\r"
-                  expect "Password:"
-                  send "${{ secrets.VPN_PASSWORD }}\r"
-                  interact
-                  EOF
-
-                  # Make the script executable
-                  chmod +x vpn_login.sh
-
-                  # Run the script to automate VPN login
-                  ./vpn_login.sh
+                  # Connect to the VPN and provide username and password
+                  echo -e "${{ secrets.VPN_USERNAME }}\n${{ secrets.VPN_PASSWORD }}" | sudo openconnect vpnnetlab.fhict.nl -b
 
             - name: Run Load Test
               run: k6 run loadTest1.js
