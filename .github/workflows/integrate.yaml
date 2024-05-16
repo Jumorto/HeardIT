@@ -75,8 +75,23 @@ jobs:
                   sudo apt-get install openconnect
                   printf 'Netlab Fontys ICT\n${{secrets.VPN_USERNAME}}\n${{secrets.VPN_PASSWORD}}\n' | sudo openconnect vpnnetlab.fhict.nl -b
 
-            - name: Run Load Test
-              run: k6 run loadTest1.js
+            - name: Setup SSH
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.SSH_NETLAB_PRIVATE }}
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${SSH_NETLAB_PRIVATE}" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+
+                  # Add the remote host to known hosts to avoid confirmation prompt
+                  ssh-keyscan -H master-node >> ~/.ssh/known_hosts
+
+            - name: Run k6 load test on remote server
+              run: |
+                  ssh -o StrictHostKeyChecking=no user@master-node << EOF
+                    cd ~/Desktop
+                    k6 run loadTest1.js
+                  EOF
 
     publish-docker-Hub-search-service:
         runs-on: ubuntu-latest
