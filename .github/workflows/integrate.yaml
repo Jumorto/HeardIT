@@ -80,15 +80,16 @@ jobs:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_NETLAB_PRIVATE }}
               run: |
                   mkdir -p ~/.ssh
-                  echo "${SSH_NETLAB_PRIVATE}" > ~/.ssh/id_rsa
+                  echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
-
-                  # Add the remote host to known hosts to avoid confirmation prompt
                   ssh-keyscan -H 192.168.144.136 >> ~/.ssh/known_hosts
+                  cat ~/.ssh/id_rsa | head -n 5
+                  ls -l ~/.ssh
+                  cat ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
-                  ssh -o StrictHostKeyChecking=no user@192.168.144.136 << EOF
+                  ssh -o StrictHostKeyChecking=no student@192.168.144.136 << EOF
                     cd ~/Desktop
                     k6 run loadTest1.js
                   EOF
