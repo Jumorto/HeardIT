@@ -72,10 +72,8 @@ jobs:
               run: |
                   sudo apt-get update
                   sudo /sbin/modprobe tun
-                  sudo apt-get install -y openconnect
-
-                  # Connect to the VPN and provide username and password
-                  echo -e "${{ secrets.VPN_USERNAME }}\n${{ secrets.VPN_PASSWORD }}" | sudo openconnect vpnnetlab.fhict.nl -b
+                  sudo apt-get install openconnect
+                  printf 'Netlab Fontys ICT\n${{secrets.VPN_USERNAME}}\n${{secrets.VPN_PASSWORD}}\n' | sudo openconnect vpnnetlab.fhict.nl -b
 
             - name: Run Load Test
               run: k6 run loadTest1.js
