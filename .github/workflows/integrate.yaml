@@ -76,13 +76,11 @@ jobs:
                   printf 'Netlab Fontys ICT\n${{secrets.VPN_USERNAME}}\n${{secrets.VPN_PASSWORD}}\n' | sudo openconnect vpnnetlab.fhict.nl -b
 
             - name: Setup SSH
-              env:
-                  SSH_NETLAB_PRIVATE: ${{ secrets.SSH_NETLAB_PRIVATE }}
               run: |
                   mkdir -p ~/.ssh
-                  echo "${SSH_NETLAB_PRIVATE}" > ~/.ssh/id_rsa
+                  echo "${{ secrets.SSH_NETLAB_PRIVATE }}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan -H 192.168.144.136 >> ~/.ssh/known_hosts
+                  ssh-keyscan 192.168.144.136 >> ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
