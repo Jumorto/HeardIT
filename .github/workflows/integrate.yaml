@@ -73,7 +73,7 @@ jobs:
                   sudo apt-get update
                   sudo /sbin/modprobe tun
                   sudo apt-get install openconnect
-                  printf 'Netlab Fontys ICT\n${{secrets.VPN_USERNAME}}\n${{secrets.VPN_PASSWORD}}\n' | sudo openconnect ${VPN_HOST} -b
+                  printf 'Netlab Fontys ICT\n${{secrets.VPN_USERNAME}}\n${{secrets.VPN_PASSWORD}}\n' | sudo openconnect ${{VPN_HOST}} -b
 
             - name: Run Load Test
               run: k6 run loadTest1.js
