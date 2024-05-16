@@ -77,7 +77,7 @@ jobs:
                   VPN_USERNAME: ${{ secrets.VPN_USERNAME }}
                   VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
               run: |
-                  printf "${VPN_PASSWORD}\n" | sudo openconnect -b ${VPN_HOST} -u ${VPN_USERNAME} --passwd-on-stdin
+                  echo "${VPN_PASSWORD}" | sudo openconnect -b ${VPN_HOST} -u ${VPN_USERNAME} --passwd-on-stdin
 
             - name: Run Load Test
               run: k6 run loadTest1.js
