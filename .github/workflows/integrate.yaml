@@ -77,15 +77,12 @@ jobs:
 
             - name: Setup SSH
               env:
-                  SSH_PRIVATE_KEY: ${{ secrets.SSH_NETLAB_PRIVATE }}
+                  SSH_NETLAB_PRIVATE: ${{ secrets.SSH_NETLAB_PRIVATE }}
               run: |
                   mkdir -p ~/.ssh
-                  echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+                  echo "${SSH_NETLAB_PRIVATE}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   ssh-keyscan -H 192.168.144.136 >> ~/.ssh/known_hosts
-                  cat ~/.ssh/id_rsa | head -n 5
-                  ls -l ~/.ssh
-                  cat ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
