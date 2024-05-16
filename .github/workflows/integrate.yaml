@@ -84,11 +84,11 @@ jobs:
                   chmod 600 ~/.ssh/id_rsa
 
                   # Add the remote host to known hosts to avoid confirmation prompt
-                  ssh-keyscan -H master-node >> ~/.ssh/known_hosts
+                  ssh-keyscan -H 192.168.144.136 >> ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
-                  ssh -o StrictHostKeyChecking=no user@master-node << EOF
+                  ssh -o StrictHostKeyChecking=no user@192.168.144.136 << EOF
                     cd ~/Desktop
                     k6 run loadTest1.js
                   EOF
