@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" modified="2024-05-19T15:36:18.573Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="d20aBNcgwtPGjtwvWmc9" version="24.4.0" type="device">
+  <diagram name="Page-1" id="5rjU6S3jx-qz5G9aWq8H">
+    <mxGraphModel dx="1434" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-jDwQLK95jsCC6RicZNi-1" value="&lt;div&gt;Establish &lt;br&gt;&lt;/div&gt;&lt;div&gt;VPN&lt;/div&gt;&lt;div&gt;Connection&lt;br&gt;&lt;/div&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.vpn_gateway;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="300" width="69" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="-jDwQLK95jsCC6RicZNi-2" value="&lt;div&gt;SSH&lt;/div&gt;&lt;div&gt;into&lt;/div&gt;&lt;div&gt;NetLab VM&lt;br&gt;&lt;/div&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="83.87" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="-jDwQLK95jsCC6RicZNi-3" value="&lt;div&gt;Perform &lt;br&gt;&lt;/div&gt;&lt;div&gt;Load Tests&lt;br&gt;&lt;/div&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Load_Test.svg;" vertex="1" parent="1">
+          <mxGeometry x="500" y="303" width="68" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="-jDwQLK95jsCC6RicZNi-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.486;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-jDwQLK95jsCC6RicZNi-1" target="-jDwQLK95jsCC6RicZNi-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-jDwQLK95jsCC6RicZNi-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.074;entryY=0.515;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-jDwQLK95jsCC6RicZNi-2" target="-jDwQLK95jsCC6RicZNi-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
