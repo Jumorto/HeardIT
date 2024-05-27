@@ -118,7 +118,7 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_songmanager_service
-        needs: build_and_test_songmanager_service
+        needs: load-test
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
