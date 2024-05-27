@@ -97,7 +97,7 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_search_service
-        needs: build_and_test_search_service
+        needs: load-test
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
