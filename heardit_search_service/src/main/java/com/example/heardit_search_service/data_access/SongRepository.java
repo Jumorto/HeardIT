@@ -8,6 +8,6 @@ import java.util.List;
 
 
 public interface SongRepository extends JpaRepository<SongEntity, Long> {
-    @Query("SELECT tr.id, tr.nametrack FROM SongEntity tr WHERE (:nametrack IS NULL OR tr.nametrack LIKE CONCAT('%', :nametrack, '%'))")
-    List<Object[]> findSongsByGivenParameters(@Param("nametrack") String nametrack);
+    @Query("SELECT tr.id, tr.nametrack, tr.useremail FROM SongEntity tr WHERE (:nametrack IS NULL OR tr.nametrack LIKE CONCAT('%', :nametrack, '%')) AND (:useremail IS NULL OR tr.useremail = :useremail)")
+    List<Object[]> findSongsByGivenParameters(@Param("nametrack") String nametrack, @Param("useremail") String useremail);
 }

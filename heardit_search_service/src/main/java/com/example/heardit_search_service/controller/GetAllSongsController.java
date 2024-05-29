@@ -17,8 +17,8 @@ public class GetAllSongsController {
     private final GetAllSongsUseCase getAllSongsUseCase;
 
     @GetMapping() //http://localhost:8081/api/search?nametrack=nine
-    public ResponseEntity<GetAllSongsResponse> getAllSongs(@RequestParam(value = "nametrack", required = false) String nametrack){
-        GetAllSongsRequest request = GetAllSongsRequest.builder().nametrack(nametrack).build();
+    public ResponseEntity<GetAllSongsResponse> getAllSongs(@RequestParam(value = "nametrack", required = false) String nametrack,@RequestParam(value = "useremail", required = false) String useremail){
+        GetAllSongsRequest request = GetAllSongsRequest.builder().nametrack(nametrack).useremail(useremail).build();
         GetAllSongsResponse response = getAllSongsUseCase.getAllSongs(request);
         return ResponseEntity.ok(response);
     }
