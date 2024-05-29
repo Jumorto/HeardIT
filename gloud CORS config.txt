@@ -1,0 +1,16 @@
+gsutil cors get gs://heardit_bucket
+gs://heardit_bucket/ has no CORS configuration.
+mdvasilev2002@cloudshell:~ (heardit-filestorage)$ nano cors.json
+mdvasilev2002@cloudshell:~ (heardit-filestorage)$ gsutil cors set cors.json gs://heardit_bucket
+Setting CORS on gs://heardit_bucket/...
+mdvasilev2002@cloudshell:~ (heardit-filestorage)$ gsutil cors get gs://heardit_bucket
+[{"maxAgeSeconds": 3600, "method": ["PUT", "POST", "GET", "DELETE"], "origin": ["http://localhost:3000", "https://heardit-frontend-slsv6nh5ga-ez.a.run.app"], "responseHeader": ["Content-Type"]}]
+
+[
+  {
+    "origin": ["http://localhost:3000", "https://heardit-frontend-slsv6nh5ga-ez.a.run.app"],
+    "method": ["PUT", "POST", "GET", "DELETE"],
+    "responseHeader": ["Content-Type"],
+    "maxAgeSeconds": 3600
+  }
+]
