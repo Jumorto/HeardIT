@@ -20,9 +20,17 @@ public class GoogleCloudStorageServiceUseCaseService implements GoogleCloudStora
     private final Storage storage;
 
     public GoogleCloudStorageServiceUseCaseService() throws IOException {
+        //   Read the JSON credentials from the environment variable
+        String jsonCredentialsPath = System.getenv("GOOGLE_APPLICATION_CREDENTIALS");
+        if (jsonCredentialsPath == null) {
+            throw new IllegalStateException("GOOGLE_APPLICATION_CREDENTIALS environment variable not set");
+        }
+
         // Load the service account credentials from the JSON file
-        GoogleCredentials credentials = GoogleCredentials.fromStream(
-                new FileInputStream("src/main/resources/heardit-filestorage-1045d2dfb3b3.json"));
+        GoogleCredentials credentials;
+        try (FileInputStream credentialsStream = new FileInputStream(jsonCredentialsPath)) {
+            credentials = GoogleCredentials.fromStream(credentialsStream);
+        }
 
         // Instantiate Storage service with the loaded credentials
         this.storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
