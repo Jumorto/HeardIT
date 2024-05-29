@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/manage")
 @AllArgsConstructor
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://heardit-frontend-slsv6nh5ga-ez.a.run.app"} )
 public class DeleteSongEntryController {
     private final DeleteSongEntryUseCase deleteSongEntryUseCase;
 
     @DeleteMapping()
     public ResponseEntity<Void> deleteSongEntry(@RequestParam(value = "id", required = true) Long id) {
         deleteSongEntryUseCase.deleteSongEntry(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/alluseremail")
+    public ResponseEntity<Void> deleteAllSongEntryByUseremail(@RequestParam(value = "useremail", required = true) String useremail) {
+        deleteSongEntryUseCase.deleteSongEntryByUserEmail(useremail);
         return ResponseEntity.noContent().build();
     }
 }
