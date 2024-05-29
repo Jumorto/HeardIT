@@ -83,11 +83,11 @@ jobs:
                   mkdir -p ~/.ssh
                   echo "${{ secrets.SSH_NETLAB_PRIVATE }}" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan 192.168.144.136 >> ~/.ssh/known_hosts
+                  ssh-keyscan 192.168.144.8 >> ~/.ssh/known_hosts
 
             - name: Run k6 load test on remote server
               run: |
-                  ssh -o StrictHostKeyChecking=no student@192.168.144.136 << EOF
+                  ssh -o StrictHostKeyChecking=no student@192.168.144.8 << EOF
                     cd ~/Desktop
                     k6 run loadTest1.js
                   EOF
