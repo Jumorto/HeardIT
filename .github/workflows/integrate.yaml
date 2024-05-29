@@ -51,10 +51,13 @@ jobs:
               with:
                   java-version: "17"
                   distribution: "temurin"
+
             - name: Export GCP credentials
-              run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $HOME/gcp-key.json
-            - name: Set GOOGLE_APPLICATION_CREDENTIALS
+              run: echo "${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}" > $HOME/gcp-key.json
+
+            - name: Set GOOGLE_APPLICATION_CREDENTIALS environment variable
               run: echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcp-key.json" >> $GITHUB_ENV
+
             - name: Setup Gradle
               uses: gradle/gradle-build-action@v3
             - name: Make gradlew executable
