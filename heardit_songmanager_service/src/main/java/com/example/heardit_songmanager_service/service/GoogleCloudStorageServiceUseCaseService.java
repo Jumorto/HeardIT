@@ -25,7 +25,6 @@ public class GoogleCloudStorageServiceUseCaseService implements GoogleCloudStora
         if (jsonCredentialsPath == null) {
             throw new IllegalStateException("GOOGLE_APPLICATION_CREDENTIALS environment variable not set");
         }
-
         // Load the service account credentials from the JSON file
         GoogleCredentials credentials;
         try (FileInputStream credentialsStream = new FileInputStream(jsonCredentialsPath)) {
