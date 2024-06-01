@@ -1,5 +1,6 @@
 package com.example.heardit_songmanager_service.controller;
 
+import com.example.heardit_songmanager_service.rabbitmq.RabbitMQSender;
 import com.example.heardit_songmanager_service.service.use_cases.DeleteSongEntryUseCase;
 import lombok.AllArgsConstructor;
 import lombok.Generated;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"http://localhost:3000", "https://heardit-frontend-slsv6nh5ga-ez.a.run.app"} )
 public class DeleteSongEntryController {
     private final DeleteSongEntryUseCase deleteSongEntryUseCase;
+    private final RabbitMQSender rabbitMQSender;
 
     @DeleteMapping()
     public ResponseEntity<Void> deleteSongEntry(@RequestParam(value = "id", required = true) Long id) {
@@ -22,7 +24,9 @@ public class DeleteSongEntryController {
 
     @DeleteMapping("/alluseremail")
     public ResponseEntity<Void> deleteAllSongEntryByUseremail(@RequestParam(value = "useremail", required = true) String useremail) {
-        deleteSongEntryUseCase.deleteSongEntryByUserEmail(useremail);
+//        deleteSongEntryUseCase.deleteSongEntryByUserEmail(useremail);
+        // Send a message to RabbitMQ to delete user data
+        rabbitMQSender.sendUserDeletionMessage(useremail);
         return ResponseEntity.noContent().build();
     }
 }
