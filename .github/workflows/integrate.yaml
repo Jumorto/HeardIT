@@ -87,15 +87,15 @@ jobs:
 
             - name: Make gradlew executable
               run: chmod +x ./gradlew
-              working-directory: rabbitmq_service
+              working-directory: rabbitMQ_service
 
             - name: Build with Gradle Wrapper
               run: ./gradlew build
-              working-directory: rabbitmq_service
+              working-directory: rabbitMQ_service
 
             - name: Run Tests
               run: ./gradlew test
-              working-directory: rabbitmq_service
+              working-directory: rabbitMQ_service
 
     load-test:
         runs-on: ubuntu-latest
