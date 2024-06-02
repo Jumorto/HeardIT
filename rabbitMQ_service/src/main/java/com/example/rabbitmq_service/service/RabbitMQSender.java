@@ -1,4 +1,4 @@
-package com.example.heardit_songmanager_service.rabbitmq;
+package com.example.rabbitmq_service.service;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
