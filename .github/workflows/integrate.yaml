@@ -75,6 +75,12 @@ jobs:
               with:
                   java-version: "17"
                   distribution: "temurin"
+            - name: Install RabbitMQ
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y rabbitmq-server
+                  sudo systemctl start rabbitmq-server
+                  sudo systemctl enable rabbitmq-server
 
             - name: Setup Gradle
               uses: gradle/gradle-build-action@v3
