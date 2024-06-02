@@ -64,17 +64,20 @@ jobs:
 
     build_and_test_rabbitmq_service:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: rabbitmq_service
+
         steps:
             - name: Checkout branch
               uses: actions/checkout@v4
+
             - name: Set up JDK 17
               uses: actions/setup-java@v4
               with:
                   java-version: "17"
                   distribution: "temurin"
+
+            - name: Setup Gradle
+              uses: gradle/gradle-build-action@v3
+
             - name: Install RabbitMQ
               run: |
                   sudo apt-get update
@@ -82,15 +85,17 @@ jobs:
                   sudo systemctl start rabbitmq-server
                   sudo systemctl enable rabbitmq-server
 
-            - name: Setup Gradle
-              uses: gradle/gradle-build-action@v3
             - name: Make gradlew executable
               run: chmod +x ./gradlew
+              working-directory: rabbitmq_service
+
             - name: Build with Gradle Wrapper
               run: ./gradlew build
+              working-directory: rabbitmq_service
 
             - name: Run Tests
               run: ./gradlew test
+              working-directory: rabbitmq_service
 
     load-test:
         runs-on: ubuntu-latest
