@@ -25,8 +25,9 @@ DROP TABLE IF EXISTS `tracks`;
 CREATE TABLE `tracks` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nametrack` varchar(45) DEFAULT NULL,
+  `useremail` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +36,7 @@ CREATE TABLE `tracks` (
 
 LOCK TABLES `tracks` WRITE;
 /*!40000 ALTER TABLE `tracks` DISABLE KEYS */;
-INSERT INTO `tracks` VALUES (1,'Nine Lives - Unicorn Heads'),(2,'Don\'t Fret - Quincas Moreira'),(3,'Don\'t Fret - Quincas Moreira');
+INSERT INTO `tracks` VALUES (47,'Nine Lives - Unicorn Heads','mdvasilev22@gmail.com'),(48,'Luna Misteriosa - Luna Cantina','mdvasilev22@gmail.com'),(49,'Don\'t Fret - Quincas Moreira','mdvasilev22@gmail.com');
 /*!40000 ALTER TABLE `tracks` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-08 10:48:38
+-- Dump completed on 2024-06-12 11:31:12
