@@ -136,8 +136,8 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_search_service
-        # needs: load-test
-        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        needs: load-test
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
             - name: Checkout repository
@@ -157,8 +157,8 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_songmanager_service
-        # needs: load-test
-        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        needs: load-test
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
             - name: Checkout repository
@@ -178,8 +178,8 @@ jobs:
         defaults:
             run:
                 working-directory: rabbitMQ_service
-        # needs: load-test
-        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        needs: load-test
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
             - name: Checkout repository
