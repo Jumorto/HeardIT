@@ -48,6 +48,53 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+    name: mysql-comments
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: mysql-comments
+    template:
+        metadata:
+            labels:
+                app: mysql-comments
+        spec:
+            containers:
+                - name: mysql-comments
+                  image: jumorto/heardit-mysql-comments:latest
+                  imagePullPolicy: Always
+                  env:
+                      - name: MYSQL_ROOT_PASSWORD
+                        value: "H@punCel9"
+                      - name: MYSQL_DATABASE
+                        value: "hearditcomments"
+                  ports:
+                      - containerPort: 3306
+                  resources:
+                      requests:
+                          memory: "256Mi"
+                          cpu: "250m"
+                      limits:
+                          memory: "512Mi"
+                          cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: mysql-comments
+spec:
+    selector:
+        app: mysql-comments
+    ports:
+        - protocol: TCP
+          port: 3307
+          targetPort: 3306
+    type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
     name: search-service
 spec:
     replicas: 1
@@ -217,6 +264,49 @@ spec:
     type: ClusterIP
 
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: commentmanager-service
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: commentmanager-service
+    template:
+        metadata:
+            labels:
+                app: commentmanager-service
+        spec:
+            containers:
+                - name: songmanager-service
+                  image: jumorto/heardit-commentmanager-service:latest
+                  imagePullPolicy: Always
+                  ports:
+                      - containerPort: 8084
+                  resources:
+                      requests:
+                          memory: "128Mi"
+                          cpu: "250m"
+                      limits:
+                          memory: "256Mi"
+                          cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: commentmanager-service
+spec:
+    selector:
+        app: commentmanager-service
+    ports:
+        - protocol: TCP
+          port: 8084
+          targetPort: 8084
+    type: ClusterIP
+
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
@@ -275,3 +365,13 @@ spec:
               - path:
                     type: PathPrefix
                     value: /api/rabbitmq
+        - backendRefs:
+              - group: ""
+                kind: Service
+                name: commentmanager-service
+                port: 8084
+                weight: 1
+          matches:
+              - path:
+                    type: PathPrefix
+                    value: /api/comment
