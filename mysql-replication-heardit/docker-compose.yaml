@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+    master:
+        image: mysql:8.0
+        container_name: mysql_master
+        command: --server-id=1 --log-bin=mysql-bin --binlog-format=row --port=3308 --default_authentication_plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: H@punCel9
+            MYSQL_DATABASE: heardittracks
+        ports:
+            - "3308:3308"
+        volumes:
+            - ./master_data:/var/lib/mysql
+            - ./initdb:/docker-entrypoint-initdb.d
+
+    slave:
+        image: mysql:8.0
+        container_name: mysql_slave
+        command: --server-id=2 --log-bin=mysql-bin --binlog-format=row
+        environment:
+            MYSQL_ROOT_PASSWORD: H@punCel9
+            MYSQL_DATABASE: heardittracks
+            MYSQL_REPLICATION_USER: repluser
+            MYSQL_REPLICATION_PASSWORD: H@punCel9
+        ports:
+            - "3307:3306"
+        volumes:
+            - ./slave_data:/var/lib/mysql
+            - ./initdb:/docker-entrypoint-initdb.d
+
+networks:
+    default:
+        name: mysql_network
