@@ -161,8 +161,8 @@ jobs:
         defaults:
             run:
                 working-directory: heardit_search_service
-        needs: load-test
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        # needs: load-test
+        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
             - name: Checkout repository
@@ -173,17 +173,17 @@ jobs:
 
             - name: Build and push Docker image
               run: |
-                  docker build -t jumorto/heardit-search-service .
+                  docker build -t jumorto/heardit-search-service-repl .
                   docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
-                  docker push jumorto/heardit-search-service
+                  docker push jumorto/heardit-search-service-repl
 
     publish-docker-Hub-songmanager-service:
         runs-on: ubuntu-latest
         defaults:
             run:
                 working-directory: heardit_songmanager_service
-        needs: load-test
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        # needs: load-test
+        # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
         steps:
             - name: Checkout repository
@@ -194,9 +194,9 @@ jobs:
 
             - name: Build and push Docker image
               run: |
-                  docker build -t jumorto/heardit-songmanager-service .
+                  docker build -t jumorto/heardit-songmanager-service-repl .
                   docker login -u jumorto -p ${{ secrets.DOCKERHUB_TOKEN }}
-                  docker push jumorto/heardit-songmanager-service
+                  docker push jumorto/heardit-songmanager-service-repl
 
     publish-docker-Hub-rabbitmq-service:
         runs-on: ubuntu-latest
