@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: mysql-replica-init
+spec:
+    template:
+        spec:
+            containers:
+                - name: mysql-replica-init
+                  image: mysql:8.0
+                  command: ["/bin/sh", "-c"]
+                  args:
+                      - >
+                          mysql -uroot -p${MYSQL_ROOT_PASSWORD} < /scripts/replica-init.sql;
+                  env:
+                      - name: MYSQL_ROOT_PASSWORD
+                        value: "H@punCel9"
+                  volumeMounts:
+                      - name: script-volume
+                        mountPath: /scripts
+                        subPath: replica-init.sql
+            restartPolicy: OnFailure
+            volumes:
+                - name: script-volume
+                  configMap:
+                      name: mysql-init-scripts
+                      items:
+                          - key: replica-init.sql
+                            path: replica-init.sql

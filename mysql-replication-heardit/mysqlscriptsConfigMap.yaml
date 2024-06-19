@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: mysql-init-scripts
+data:
+    master-init.sql: |
+        CREATE USER 'srv-repl'@'%' IDENTIFIED BY 'slavepass';
+        GRANT REPLICATION SLAVE ON *.* TO 'srv-repl'@'%';
+        SHOW MASTER STATUS;
+    replica-init.sql: |
+        STOP REPLICA;
+        CHANGE REPLICATION SOURCE TO
+          SOURCE_HOST='mysql-master',
+          SOURCE_PORT=3309,
+          SOURCE_USER='srv-repl',
+          SOURCE_PASSWORD='slavepass',
+          SOURCE_LOG_FILE='mysql-bin.000003',
+          SOURCE_LOG_POS=668;
+        START REPLICA;

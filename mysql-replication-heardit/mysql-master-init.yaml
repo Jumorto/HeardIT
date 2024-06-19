@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: mysql-master-init
+spec:
+    template:
+        spec:
+            containers:
+                - name: mysql-master-init
+                  image: mysql:8.0
+                  command: ["/bin/sh", "-c"]
+                  args:
+                      - >
+                          mysql -uroot -p${MYSQL_ROOT_PASSWORD} < /scripts/master-init.sql;
+                  env:
+                      - name: MYSQL_ROOT_PASSWORD
+                        value: "H@punCel9"
+                  volumeMounts:
+                      - name: script-volume
+                        mountPath: /scripts
+                        subPath: master-init.sql
+            restartPolicy: OnFailure
+            volumes:
+                - name: script-volume
+                  configMap:
+                      name: mysql-init-scripts
+                      items:
+                          - key: master-init.sql
+                            path: master-init.sql
