@@ -23,7 +23,7 @@ public class GetAllSongsUseCaseService implements GetAllSongsUseCase {
     @Override
     public GetAllSongsResponse getAllSongs(GetAllSongsRequest request){
         List<Object[]> results;
-        results = songRepository.findSongsByGivenParameters(request.getNametrack());
+        results = songRepository.findSongsByGivenParameters(request.getNametrack(), request.getUseremail());
 
         final GetAllSongsResponse response = new GetAllSongsResponse();
         List<Song> songs = results.stream().map(SongConverter::convert).toList();

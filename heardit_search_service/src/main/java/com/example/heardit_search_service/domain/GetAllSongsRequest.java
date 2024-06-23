@@ -9,4 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 public class GetAllSongsRequest {
     private String nametrack;
+    private String useremail;
 }

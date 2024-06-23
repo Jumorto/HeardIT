@@ -37,24 +37,27 @@ public class TestGetAllSongsUseCaseService {
     @Test
     public void testGetAllSongs() {
         List<Object[]> mockedResults = new ArrayList<>();
-        mockedResults.add(new Object[]{1L, "Song 1"});
-        mockedResults.add(new Object[]{2L, "Song 2"});
+        mockedResults.add(new Object[]{1L, "Song 1", "user@email.com"});
+        mockedResults.add(new Object[]{2L, "Song 2", "user@email.com"});
 
-        when(songRepository.findSongsByGivenParameters(anyString())).thenReturn(mockedResults);
+        when(songRepository.findSongsByGivenParameters(anyString(),anyString())).thenReturn(mockedResults);
 
         GetAllSongsRequest request = new GetAllSongsRequest();
         request.setNametrack("Song");
+        request.setUseremail("user@email.com");
 
         GetAllSongsResponse response = getAllSongsUseCaseService.getAllSongs(request);
 
-        verify(songRepository).findSongsByGivenParameters("Song");
+        verify(songRepository).findSongsByGivenParameters("Song", "user@email.com");
 
         List<Song> songs = response.getSongs();
 
         assertEquals(2, songs.size());
         assertEquals(1L, songs.get(0).getId());
         assertEquals("Song 1", songs.get(0).getNametrack());
+        assertEquals("user@email.com", songs.get(0).getUseremail());
         assertEquals(2L, songs.get(1).getId());
         assertEquals("Song 2", songs.get(1).getNametrack());
+        assertEquals("user@email.com", songs.get(1).getUseremail());
     }
 }

@@ -10,4 +10,5 @@ import lombok.*;
 public class Song {
     private Long id;
     private String nametrack;
+    private String useremail;
 }

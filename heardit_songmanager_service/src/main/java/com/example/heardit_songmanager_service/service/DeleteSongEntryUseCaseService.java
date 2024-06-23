@@ -14,4 +14,8 @@ public class DeleteSongEntryUseCaseService implements DeleteSongEntryUseCase {
     public void deleteSongEntry(long id) {
         this.songRepository.deleteById(id);
     }
+    @Override
+    public void deleteSongEntryByUserEmail(String useremail) {
+        this.songRepository.deleteAllByUserEmail(useremail);
+    }
 }

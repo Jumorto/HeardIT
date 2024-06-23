@@ -1,0 +1,4 @@
+
+choco install rabbitmq
+
+http://localhost:15672/ ---- the dashboard

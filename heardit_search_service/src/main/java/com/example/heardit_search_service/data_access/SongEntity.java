@@ -19,4 +19,7 @@ public class SongEntity {
 
     @Column(name = "nametrack")
     private String nametrack;
+
+    @Column(name = "useremail")
+    private String useremail;
 }
